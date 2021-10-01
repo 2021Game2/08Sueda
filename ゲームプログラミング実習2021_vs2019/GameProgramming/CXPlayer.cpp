@@ -20,11 +20,12 @@ void CXPlayer::Init(CModelX* model)
 	mColSphereHead.mpMatrix = &mpCombinedMatrix[12];
 	//剣
 	mColSphereSword.mpMatrix = &mpCombinedMatrix[22];
-
+	
 }
 
 void CXPlayer::Update()
 {
+	//攻撃アニメーション
 	if (mAnimationIndex == 3)
 	{
 		if (mAnimationFrame >= mAnimationFrameSize)
@@ -39,25 +40,50 @@ void CXPlayer::Update()
 			ChangeAnimation(0, true, 60);
 		}
 	}
+	//ジャンプ攻撃アニメーション
+	else if (mAnimationIndex == 7)
+	{
+		if (mAnimationFrame >= mAnimationFrameSize)
+		{
+			ChangeAnimation(8, false, 30);
+		}
+	}
+	else if (mAnimationIndex == 8)
+	{
+		if (mAnimationFrame >= mAnimationFrameSize)
+		{
+			ChangeAnimation(0, true, 60);
+		}
+	}
 	else
 	{
+		//左回転
 		if (CKey::Push('A'))
 		{
 			mRotation.mY += 2.0f;
 		}
+		//右回転
 		if (CKey::Push('D'))
 		{
 			mRotation.mY -= 2.0f;
 		}
+		//攻撃
 		if (CKey::Push(' '))
 		{
 			ChangeAnimation(3, true, 30);
 		}
+		//ジャンプ攻撃
+		else if (CKey::Push('J'))
+		{
+			ChangeAnimation(7, true, 30);
+		}
+		//移動
 		else if (CKey::Push('W'))
 		{
 			ChangeAnimation(1, true, 60);
 			mPosition += CVector(0.0f, 0.0f, 0.1f) * mMatrixRotate;
 		}
+		//待機
 		else {
 			ChangeAnimation(0, true, 60);
 		}

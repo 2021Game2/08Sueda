@@ -12,6 +12,8 @@
 //
 #include "CCollisionManager.h"
 
+#include "CWall.h"
+
 CMatrix Matrix;
 
 CSceneGame::~CSceneGame() {
@@ -40,21 +42,31 @@ void CSceneGame::Init() {
 	mPlayer.Init(&CRes::sModelX);
 
 	//敵の初期設定
-	mEnemy.Init(&CRes::sKnight);
-	mEnemy.mAnimationFrameSize = 1024;
+//	mEnemy.Init(&CRes::sKnight);
+//	mEnemy.mAnimationFrameSize = 1024;
 	//敵の配置
-	mEnemy.mPosition = CVector(7.0f, 0.0f, 0.0f);
-	mEnemy.ChangeAnimation(2, true, 200);
+//	mEnemy.mPosition = CVector(7.0f, 0.0f, 0.0f);
+//	mEnemy.ChangeAnimation(2, true, 200);
 
+	//三角コライダの確認
+	mColliderTriangle.Set(NULL, NULL, CVector(-100.0f, 0.0f, -100.0f), CVector(-100.0f, 0.0f, 100.0f), CVector(100.0f, 0.0f, -100.0f));
+	mColliderTriangle2.Set(NULL, NULL, CVector(100.0f, 0.0f, -100.0f), CVector(-100.0f, 0.0f, 100.0f), CVector(100.0f, 0.0f, 100.0f));
+
+	//壁の配置
+	new CWall(CVector(-100.0f, 0.0f, 0.0f), CVector(), CVector(0.0f, 10.0f, 100.0f));  //左壁
+	new CWall(CVector(100.0f, 0.0f, 0.0f), CVector(), CVector(0.0f, 10.0f, 100.0f));   //右壁
+	new CWall(CVector(0.0f, 0.0f, 100.0f), CVector(), CVector(100.0f, 10.0f, 0.0f));   //上壁
+	new CWall(CVector(0.0f, 0.0f, -100.0f), CVector(), CVector(100.0f, 10.0f, 0.0f));  //下壁
 }
 
 
 void CSceneGame::Update() {
 
 	//キャラクタークラスの更新
-	mPlayer.Update();
+//	mPlayer.Update();
 	//敵の更新
-	mEnemy.Update();
+//	mEnemy.Update();
+	CTaskManager::Get()->Update();
 
 	//衝突処理
 	CCollisionManager::Get()->Collision();
@@ -62,39 +74,42 @@ void CSceneGame::Update() {
 	//カメラのパラメータを作成する
 	CVector e, c, u;//視点、注視点、上方向
 	//視点を求める
-	e = CVector(1.0f, 2.0f, 10.0f);
+	e = CVector(0.0f, 5.0f, -10.0f) * mPlayer.mMatrix;
 	//注視点を求める
-	c = CVector();
+	c = mPlayer.mPosition;
 	//上方向を求める
-	u = CVector(0.0f, 1.0f, 0.0f);
+	u = CVector(0.0f, 1.0f, 0.0f) * mPlayer.mMatrixRotate;
 
 	//カメラクラスの設定
 	Camera.Set(e, c, u);
 	Camera.Render();
 
 	//X軸＋回転
-	if (CKey::Push('K')) {
-		Matrix = Matrix * CMatrix().RotateX(1);
-	}
-	if (CKey::Push('I')) {
-		Matrix = Matrix * CMatrix().RotateX(-1);
-	}
+//	if (CKey::Push('K')) {
+//		Matrix = Matrix * CMatrix().RotateX(1);
+//	}
+//	if (CKey::Push('I')) {
+//		Matrix = Matrix * CMatrix().RotateX(-1);
+//	}
 	//Y軸＋回転
-	if (CKey::Push('L')) {
-		Matrix = Matrix * CMatrix().RotateY(1);
-	}
-	if (CKey::Push('J')) {
-		Matrix = Matrix * CMatrix().RotateY(-1);
-	}
+//	if (CKey::Push('L')) {
+//		Matrix = Matrix * CMatrix().RotateY(1);
+//	}
+//	if (CKey::Push('J')) {
+//		Matrix = Matrix * CMatrix().RotateY(-1);
+//	}
 
 	//行列設定
 	glMultMatrixf(Matrix.mF);
 
 	//モデル描画
 //	CRes::sModelX.Render();
-	mPlayer.Render();
+//	mPlayer.Render();
 	//敵描画
-	mEnemy.Render();
+//	mEnemy.Render();
+	//マップ描画
+//	mMap.Render();
+	CTaskManager::Get()->Render();
 
 	//コライダの描画
 	CCollisionManager::Get()->Render();

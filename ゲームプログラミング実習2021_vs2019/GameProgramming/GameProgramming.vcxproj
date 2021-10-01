@@ -98,6 +98,7 @@
     <ClCompile Include="CEnemy.cpp" />
     <ClCompile Include="CEnemy2.cpp" />
     <ClCompile Include="CKey.cpp" />
+    <ClCompile Include="CMap.cpp" />
     <ClCompile Include="CMaterial.cpp" />
     <ClCompile Include="CMatrix.cpp" />
     <ClCompile Include="CModel.cpp" />
@@ -116,6 +117,7 @@
     <ClCompile Include="CTriangle.cpp" />
     <ClCompile Include="CUtil.cpp" />
     <ClCompile Include="CVector.cpp" />
+    <ClCompile Include="CWall.cpp" />
     <ClCompile Include="CXCharacter.cpp" />
     <ClCompile Include="CXEnemy.cpp" />
     <ClCompile Include="CXPlayer.cpp" />
@@ -135,6 +137,7 @@
     <ClInclude Include="CEnemy.h" />
     <ClInclude Include="CEnemy2.h" />
     <ClInclude Include="CKey.h" />
+    <ClInclude Include="CMap.h" />
     <ClInclude Include="CMaterial.h" />
     <ClInclude Include="CMatrix.h" />
     <ClInclude Include="CModel.h" />
@@ -156,6 +159,7 @@
     <ClInclude Include="CUtil.h" />
     <ClInclude Include="CVector.h" />
     <ClInclude Include="CVertex.h" />
+    <ClInclude Include="CWall.h" />
     <ClInclude Include="CXCharacter.h" />
     <ClInclude Include="CXEnemy.h" />
     <ClInclude Include="CXPlayer.h" />
