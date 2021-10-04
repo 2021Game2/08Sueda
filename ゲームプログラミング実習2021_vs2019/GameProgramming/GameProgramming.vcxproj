@@ -118,6 +118,13 @@
     <ClCompile Include="CUtil.cpp" />
     <ClCompile Include="CVector.cpp" />
     <ClCompile Include="CWall.cpp" />
+    <ClCompile Include="CWall_B.cpp" />
+    <ClCompile Include="CWall_G.cpp" />
+    <ClCompile Include="CWall_I.cpp" />
+    <ClCompile Include="CWall_O.cpp" />
+    <ClCompile Include="CWall_P.cpp" />
+    <ClCompile Include="CWall_R.cpp" />
+    <ClCompile Include="CWall_Y.cpp" />
     <ClCompile Include="CXCharacter.cpp" />
     <ClCompile Include="CXEnemy.cpp" />
     <ClCompile Include="CXPlayer.cpp" />
@@ -160,6 +167,13 @@
     <ClInclude Include="CVector.h" />
     <ClInclude Include="CVertex.h" />
     <ClInclude Include="CWall.h" />
+    <ClInclude Include="CWall_B.h" />
+    <ClInclude Include="CWall_G.h" />
+    <ClInclude Include="CWall_I.h" />
+    <ClInclude Include="CWall_O.h" />
+    <ClInclude Include="CWall_P.h" />
+    <ClInclude Include="CWall_R.h" />
+    <ClInclude Include="CWall_Y.h" />
     <ClInclude Include="CXCharacter.h" />
     <ClInclude Include="CXEnemy.h" />
     <ClInclude Include="CXPlayer.h" />
