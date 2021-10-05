@@ -17,9 +17,9 @@ CWall_I::CWall_I()
 	mpModel = &mModel;
 
 	//モデルのマテリアルの色(Diffuse)を変更する...藍
-	mpModel->mpMaterials[0]->mDiffuse[0] = 0.0f;    //R 赤
-	mpModel->mpMaterials[0]->mDiffuse[1] = 0.0f;    //G 緑
-	mpModel->mpMaterials[0]->mDiffuse[2] = 1.0f;    //B 青
+	mpModel->mpMaterials[0]->mDiffuse[0] = 0.0f;     //R 赤
+	mpModel->mpMaterials[0]->mDiffuse[1] = 0.0f;     //G 緑
+	mpModel->mpMaterials[0]->mDiffuse[2] = 10.0f;    //B 青
 }
 
 //コンストラクタ
