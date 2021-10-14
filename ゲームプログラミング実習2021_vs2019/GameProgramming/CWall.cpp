@@ -33,3 +33,7 @@ CWall::CWall(const CVector& position, const CVector& rotation, const CVector& sc
 	mScale = scale;         //ägèkÇÃê›íË
 	CTransform::Update();
 }
+
+void CWall::Init() {
+	mColliderMesh.Set(NULL, NULL, &mModel);
+}

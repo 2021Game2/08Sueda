@@ -20,6 +20,10 @@ public:
 	void Init(CModelX* model);
 
 	void Update();
+
+	//衝突処理
+	//Collision(コライダ1, コライダ2)
+	void Collision(CCollider* m, CCollider* o);
 };
 
 #endif
