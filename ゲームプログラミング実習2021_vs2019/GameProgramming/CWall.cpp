@@ -40,7 +40,7 @@ CWall::CWall(const CVector& position, const CVector& rotation, const CVector& sc
 }
 
 void CWall::Init() {
-	mColliderMesh.Set(this, &mMatrix, &mModel);
+	mColliderMesh.Set(, , &mModel);
 }
 
 //XVˆ—
