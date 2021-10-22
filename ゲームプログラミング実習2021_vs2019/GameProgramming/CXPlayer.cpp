@@ -104,5 +104,6 @@ void CXPlayer::Collision(CCollider* m, CCollider* o) {
 		{   //è’ìÀÇµÇ»Ç¢à íuÇ‹Ç≈ñﬂÇ∑
 			mPosition = mPosition + adjust;
 		}
+		break;
 	}
 }

@@ -5,6 +5,7 @@
 #include "CXEnemy.h"
 #include "CMap.h"
 #include "CColliderTriangle.h"
+#include "CColliderMesh.h"
 /*
 ƒQ[ƒ€‚ÌƒV[ƒ“
 */
