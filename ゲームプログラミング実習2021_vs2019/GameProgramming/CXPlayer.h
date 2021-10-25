@@ -11,6 +11,8 @@ public:
 	CCollider mColSphereBody;	//‘Ì
 	CCollider mColSphereHead;	//“ª
 	CCollider mColSphereSword;	//Œ•
+	CCollider mColSphereLegs_L; //¶‘«
+	CCollider mColSphereLegs_R; //‰E‘«
 	
 	CXPlayer();
 

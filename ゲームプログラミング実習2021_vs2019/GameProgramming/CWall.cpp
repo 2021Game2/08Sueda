@@ -21,6 +21,8 @@ CWall::CWall()
 	mpModel->mpMaterials[0]->mDiffuse[0] = 0.0f;  //R 赤
 	mpModel->mpMaterials[0]->mDiffuse[1] = 0.0f;  //G 緑
 	mpModel->mpMaterials[0]->mDiffuse[2] = 0.0f;  //B 青
+
+	mColliderMesh.Set(this, &mMatrix, &mModel);
 }
 
 //コンストラクタ
@@ -32,6 +34,9 @@ CWall::CWall(const CVector& position, const CVector& rotation, const CVector& sc
 	mPosition = position;   //位置の設定
 	mRotation = rotation;   //回転の設定
 	mScale = scale;         //拡縮の設定
+	if (mScale.mX == 0.0f)mScale.mX = 1.0f;
+	if (mScale.mY == 0.0f)mScale.mY = 1.0f;
+	if (mScale.mZ == 0.0f)mScale.mZ = 1.0f;
 	CTransform::Update();
 	//優先度を1に変更する
 	mPriority = 1;
@@ -39,31 +44,7 @@ CWall::CWall(const CVector& position, const CVector& rotation, const CVector& sc
 	CTaskManager::Get()->Add(this); //追加する
 }
 
-void CWall::Init() {
-	mColliderMesh.Set(, , &mModel);
-}
-
-//更新処理
-void CWall::Update() {
-
-}
-
 void CWall::Collision(CCollider* m, CCollider* o)
 {
-	//相手のコライダタイプの判定
-	switch (o->mType)
-	{
-	case CCollider::ETRIANGLE: //三角コライダの時
-		CVector adjust;  //調整値
-		//三角コライダと球コライダの衝突判定
-		if (CCollider::CollisionTriangleSphere(o, m, &adjust))
-		{   //衝突しない位置まで戻す
-			mPosition = mPosition + adjust;
-		}
-		break;
-	}
-}
-
-void CWall::TaskCollision() {
-
+	return;
 }

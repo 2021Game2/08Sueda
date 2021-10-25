@@ -75,42 +75,42 @@ void CSceneGame::Init() {
 	new CWall(CVector(0.0f, 0.0f, 100.0f), CVector(), CVector(100.0f, 10.0f, 0.0f));    //上壁
 	new CWall(CVector(0.0f, 0.0f, -100.0f), CVector(), CVector(100.0f, 10.0f, 0.0f));   //下壁
 	//内壁(左下)の配置
-	new CWall(CVector(10.0f, 0.0f, -70.0f), CVector(), CVector(0.0f, 10.0f, 30.0f));
+	new CWall(CVector(10.0f, 0.0f, -70.0f), CVector(), CVector(0.0f, 10.0f, 31.0f));
 	new CWall(CVector(30.0f, 0.0f, -40.0f), CVector(), CVector(20.0f, 10.0f, 0.0f));    //特殊な壁(赤)の近辺の壁
 	new CWall(CVector(90.0f, 0.0f, -40.0f), CVector(), CVector(10.0f, 10.0f, 0.0f));    //特殊な壁(赤)の近辺の壁
 	new CWall_R(CVector(65.0f, 0.0f, -40.0f), CVector(), CVector(15.0f, 10.0f, 0.0f));  //特殊な壁(赤)
 	//内壁(左上)の配置
 	new CWall(CVector(55.0f, 0.0f, -30.0f), CVector(), CVector(45.0f, 10.0f, 0.0f));
-	new CWall(CVector(10.0f, 0.0f, 10.0f), CVector(), CVector(0.0f, 10.0f, 40.0f));
-	new CWall(CVector(20.0f, 0.0f, 15.0f), CVector(), CVector(0.0f, 10.0f, 45.0f));
+	new CWall(CVector(10.0f, 0.0f, 10.0f), CVector(), CVector(0.0f, 10.0f, 41.0f));
+	new CWall(CVector(20.0f, 0.0f, 15.0f), CVector(), CVector(0.0f, 10.0f, 46.0f));
 	new CWall(CVector(15.0f, 0.0f, 60.0f), CVector(), CVector(5.0f, 10.0f, 0.0f));
-	new CWall(CVector(80.0f, 0.0f, 15.0f), CVector(), CVector(0.0f, 10.0f, 25.0f));
+	new CWall(CVector(80.0f, 0.0f, 15.0f), CVector(), CVector(0.0f, 10.0f, 26.0f));
 	new CWall(CVector(50.0f, 0.0f, 40.0f), CVector(), CVector(30.0f, 10.0f, 0.0f));
 	new CWall(CVector(60.0f, 0.0f, -10.0f), CVector(), CVector(20.0f, 10.0f, 0.0f));    //特殊な壁(藍)の近辺の壁
 	new CWall(CVector(55.0f, 0.0f, 60.0f), CVector(), CVector(25.0f, 10.0f, 0.0f));     //特殊な壁(緑)の近辺の壁
-	new CWall(CVector(30.0f, 0.0f, 80.0f), CVector(), CVector(0.0f, 10.0f, 20.0f));
+	new CWall(CVector(30.0f, 0.0f, 80.0f), CVector(), CVector(0.0f, 10.0f, 21.0f));
 	new CWall_G(CVector(90.0f, 0.0f, 60.0f), CVector(), CVector(10.0f, 10.0f, 0.0f));   //特殊な壁(緑)
 	new CWall_I(CVector(30.0f, 0.0f, -10.0f), CVector(), CVector(10.0f, 10.0f, 0.0f));  //特殊な壁(藍)
 	//内壁(右下)の配置
-	new CWall(CVector(-10.0f, 0.0f, -90.0f), CVector(), CVector(0.0f, 10.0f, 10.0f));
+	new CWall(CVector(-10.0f, 0.0f, -90.0f), CVector(), CVector(0.0f, 10.0f, 11.0f));
 	new CWall(CVector(-30.0f, 0.0f, -80.0f), CVector(), CVector(20.0f, 10.0f, 0.0f));   //特殊な壁(黄)の近辺の壁
 	new CWall(CVector(-85.0f, 0.0f, -80.0f), CVector(), CVector(15.0f, 10.0f, 0.0f));   //特殊な壁(黄)の近辺の壁
 	new CWall_Y(CVector(-60.0f, 0.0f, -80.0f), CVector(), CVector(10.0f, 10.0f, 0.0f)); //特殊な壁(黄)
 	//内壁(右中心)の配置
 	new CWall(CVector(-55.0f, 0.0f, -70.0f), CVector(), CVector(45.0f, 10.0f, 0.0f));
-	new CWall(CVector(-10.0f, 0.0f, -30.0f), CVector(), CVector(0.0f, 10.0f, 40.0f));
+	new CWall(CVector(-10.0f, 0.0f, -30.0f), CVector(), CVector(0.0f, 10.0f, 41.0f));
 	new CWall(CVector(-30.0f, 0.0f, 10.0f), CVector(), CVector(20.0f, 10.0f, 0.0f));
-	new CWall(CVector(-50.0f, 0.0f, -5.0f), CVector(), CVector(0.0f, 10.0f, 15.0f));    //特殊な壁(青)の近辺の壁
-	new CWall(CVector(-50.0f, 0.0f, -55.0f), CVector(), CVector(0.0f, 10.0f, 15.0f));   //特殊な壁(青)の近辺の壁
-	new CWall(CVector(-60.0f, 0.0f, -30.0f), CVector(), CVector(0.0f, 10.0f, 40.0f));
-	new CWall(CVector(-70.0f, 0.0f, -30.0f), CVector(), CVector(0.0f, 10.0f, 40.0f));
-	new CWall(CVector(-80.0f, 0.0f, -30.0f), CVector(), CVector(0.0f, 10.0f, 40.0f));   //特殊な壁(紫)の近辺の壁
-	new CWall(CVector(-90.0f, 0.0f, -30.0f), CVector(), CVector(0.0f, 10.0f, 40.0f));   //特殊な壁(紫)の近辺の壁
-	new CWall_B(CVector(-50.0f, 0.0f, -30.0f), CVector(), CVector(0.0f, 10.0f, 10.0f)); //特殊な壁(青)
-	new CWall_P(CVector(-85.0f, 0.0f, 10.0f), CVector(), CVector(5.0f, 10.0f, 0.0f));   //特殊な壁(紫)
+	new CWall(CVector(-50.0f, 0.0f, -5.0f), CVector(), CVector(0.0f, 10.0f, 16.0f));    //特殊な壁(青)の近辺の壁
+	new CWall(CVector(-50.0f, 0.0f, -55.0f), CVector(), CVector(0.0f, 10.0f, 16.0f));   //特殊な壁(青)の近辺の壁
+	new CWall(CVector(-60.0f, 0.0f, -30.0f), CVector(), CVector(0.0f, 10.0f, 41.0f));
+	new CWall(CVector(-70.0f, 0.0f, -30.0f), CVector(), CVector(0.0f, 10.0f, 41.0f));
+	new CWall(CVector(-80.0f, 0.0f, -30.0f), CVector(), CVector(0.0f, 10.0f, 41.0f));   //特殊な壁(紫)の近辺の壁
+	new CWall(CVector(-90.0f, 0.0f, -30.0f), CVector(), CVector(0.0f, 10.0f, 41.0f));   //特殊な壁(紫)の近辺の壁
+	new CWall_B(CVector(-50.0f, 0.0f, -30.0f), CVector(), CVector(0.0f, 10.0f, 9.0f));  //特殊な壁(青)
+	new CWall_P(CVector(-85.0f, 0.0f, 10.0f), CVector(), CVector(4.0f, 10.0f, 0.0f));   //特殊な壁(紫)
 	//内壁(右上)の配置
 	new CWall(CVector(-55.0f, 0.0f, 20.0f), CVector(), CVector(45.0f, 10.0f, 0.0f));
-	new CWall(CVector(-10.0f, 0.0f, 55.0f), CVector(), CVector(0.0f, 10.0f, 35.0f));
+	new CWall(CVector(-10.0f, 0.0f, 55.0f), CVector(), CVector(0.0f, 10.0f, 36.0f));
 	new CWall(CVector(-20.0f, 0.0f, 65.0f), CVector(), CVector(0.0f, 10.0f, 35.0f));
 	new CWall(CVector(-30.0f, 0.0f, 55.0f), CVector(), CVector(0.0f, 10.0f, 35.0f));
 	new CWall(CVector(-40.0f, 0.0f, 65.0f), CVector(), CVector(0.0f, 10.0f, 35.0f));

@@ -5,6 +5,8 @@ CXPlayer::CXPlayer()
 	: mColSphereBody(this, nullptr, CVector(), 0.5f)
 	, mColSphereHead(this, nullptr, CVector(0.0f, 5.0f, -3.0f), 0.5f)
 	, mColSphereSword(this, nullptr, CVector(-10.0f, 10.0f, 50.0f), 0.3f)
+	, mColSphereLegs_L(this, nullptr, CVector(-5.0f, -5.0f, 0.0f), 0.5f)
+	, mColSphereLegs_R(this, nullptr, CVector(5.0f, -5.0f, 0.0f), 0.5f)
 {
 	//タグにプレイヤーを設定します
 	mTag = EPLAYER;
@@ -20,7 +22,10 @@ void CXPlayer::Init(CModelX* model)
 	mColSphereHead.mpMatrix = &mpCombinedMatrix[12];
 	//剣
 	mColSphereSword.mpMatrix = &mpCombinedMatrix[22];
-	
+	//左足
+	mColSphereLegs_L.mpMatrix = &mpCombinedMatrix[25];
+	//右足
+	mColSphereLegs_R.mpMatrix = &mpCombinedMatrix[32];
 }
 
 void CXPlayer::Update()
@@ -94,8 +99,7 @@ void CXPlayer::Update()
 //衝突処理
 //Collision(コライダ1, コライダ2)
 void CXPlayer::Collision(CCollider* m, CCollider* o) {
-	//相手のコライダタイプの判定
-	switch (o->mType)
+	switch(o->mType)
 	{
 	case CCollider::ETRIANGLE: //三角コライダの時
 		CVector adjust;  //調整値
