@@ -46,7 +46,7 @@ CCube_Y::CCube_Y(const CVector& position, const CVector& rotation, const CVector
 void CCube_Y::Collision(CCollider* m, CCollider* o)
 {
 	//相手のコライダタイプの判定
-	switch (o->mTag)
+	switch (o->mType)
 	{
 	case CCollider::ESPHERE:
 		if (CCollider::Collision(m, o)) {

@@ -11,6 +11,8 @@ CXPlayer::CXPlayer()
 	//タグにプレイヤーを設定します
 	mTag = EPLAYER;
 	mColSphereSword.mTag = CCollider::ESWORD;
+	mColSphereLegs_L.mTag = CCollider::ELEGS_L;
+	mColSphereLegs_R.mTag = CCollider::ELEGS_R;
 }
 
 void CXPlayer::Init(CModelX* model)
