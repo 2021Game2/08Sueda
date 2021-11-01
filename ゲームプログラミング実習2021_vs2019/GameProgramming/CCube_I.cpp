@@ -1,5 +1,6 @@
 #include "CCube_I.h"
 #include "CSceneGame.h"
+#include "CTaskManager.h"
 #define OBJ "cube.obj"  //モデルのファイル
 #define MTL "cube.mtl"  //モデルのマテリアルファイル
 
@@ -7,6 +8,7 @@ CModel CCube_I::mModel;  //モデルデータ作成
 
 //デフォルトコンストラクタ
 CCube_I::CCube_I()
+	:mCollider(this, &mMatrix, CVector(0.0f, 1.0f, 0.0f), 1.5f)
 {
 	//モデルがないときは読み込む
 	if (mModel.mTriangles.size() == 0)
@@ -32,4 +34,17 @@ CCube_I::CCube_I(const CVector& position, const CVector& rotation, const CVector
 	mRotation = rotation;   //回転の設定
 	mScale = scale;         //拡縮の設定
 	CTransform::Update();
+}
+
+void CCube_I::Collision(CCollider* m, CCollider* o)
+{
+	//相手のコライダタイプの判定
+	switch (o->mType)
+	{
+	case CCollider::ESPHERE:
+		if (CCollider::Collision(m, o)) {
+			mEnabled = false;
+		}
+		break;
+	}
 }

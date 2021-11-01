@@ -22,6 +22,8 @@ CCube_Y::CCube_Y()
 	mpModel->mpMaterials[0]->mDiffuse[0] = 10.0f;  //R 赤
 	mpModel->mpMaterials[0]->mDiffuse[1] = 10.0f;  //G 緑
 	mpModel->mpMaterials[0]->mDiffuse[2] = 0.0f;   //B 青
+
+//	mCollider.mTag = CCollider::ECUBE_Y;
 }
 
 //コンストラクタ

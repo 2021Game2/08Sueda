@@ -188,6 +188,9 @@ void CSceneGame::Update() {
 //	mEnemy.Render();
 	//マップ描画
 //	mMap.Render();
+
+	CTaskManager::Get()->Delete();
+
 	CTaskManager::Get()->Render();
 
 	//コライダの描画
