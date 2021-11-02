@@ -1,6 +1,7 @@
 #include "CCube_I.h"
 #include "CSceneGame.h"
 #include "CTaskManager.h"
+#include "CWall_I.h"
 #define OBJ "cube.obj"  //モデルのファイル
 #define MTL "cube.mtl"  //モデルのマテリアルファイル
 
@@ -44,6 +45,7 @@ void CCube_I::Collision(CCollider* m, CCollider* o)
 	case CCollider::ESPHERE:
 		if (CCollider::Collision(m, o)) {
 			mEnabled = false;
+			CWall_I::spInstance->mEnabled = false;
 		}
 		break;
 	}

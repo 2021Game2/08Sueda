@@ -6,6 +6,7 @@
 
 class CWall_Y :public CCharacter {
 public:
+	static CWall_Y* spInstance;
 	//モデルデータ
 	static CModel mModel;
 	//モデルからコライダを生成

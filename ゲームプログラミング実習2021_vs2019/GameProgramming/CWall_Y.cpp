@@ -5,6 +5,7 @@
 #define MTL "cube.mtl"  //モデルのマテリアルファイル
 
 CModel CWall_Y::mModel;  //モデルデータ作成
+CWall_Y* CWall_Y::spInstance = 0;
 
 //デフォルトコンストラクタ
 CWall_Y::CWall_Y()
@@ -23,6 +24,7 @@ CWall_Y::CWall_Y()
 	mpModel->mpMaterials[0]->mDiffuse[2] = 0.0f;   //B 青
 
 	mColliderMesh.Set(this, &mMatrix, &mModel);
+	spInstance = this;
 }
 
 //コンストラクタ

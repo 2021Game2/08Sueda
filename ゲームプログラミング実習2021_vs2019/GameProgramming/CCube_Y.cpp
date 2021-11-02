@@ -1,6 +1,7 @@
 #include "CCube_Y.h"
 #include "CSceneGame.h"
 #include "CTaskManager.h"
+#include "CWall_Y.h"
 #define OBJ "cube.obj"  //モデルのファイル
 #define MTL "cube.mtl"  //モデルのマテリアルファイル
 
@@ -22,8 +23,6 @@ CCube_Y::CCube_Y()
 	mpModel->mpMaterials[0]->mDiffuse[0] = 10.0f;  //R 赤
 	mpModel->mpMaterials[0]->mDiffuse[1] = 10.0f;  //G 緑
 	mpModel->mpMaterials[0]->mDiffuse[2] = 0.0f;   //B 青
-
-//	mCollider.mTag = CCollider::ECUBE_Y;
 }
 
 //コンストラクタ
@@ -53,6 +52,7 @@ void CCube_Y::Collision(CCollider* m, CCollider* o)
 	case CCollider::ESPHERE:
 		if (CCollider::Collision(m, o)) {
 			mEnabled = false;
+			CWall_Y::spInstance->mEnabled = false;
 		}
 		break;
 	}
