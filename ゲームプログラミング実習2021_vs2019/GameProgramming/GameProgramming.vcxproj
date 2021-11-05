@@ -85,6 +85,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CBall_B.cpp" />
+    <ClCompile Include="CBall_G.cpp" />
+    <ClCompile Include="CBall_I.cpp" />
+    <ClCompile Include="CBall_O.cpp" />
+    <ClCompile Include="CBall_P.cpp" />
+    <ClCompile Include="CBall_R.cpp" />
+    <ClCompile Include="CBall_Y.cpp" />
     <ClCompile Include="CBillBoard.cpp" />
     <ClCompile Include="CBlock.cpp" />
     <ClCompile Include="CBullet.cpp" />
@@ -139,6 +146,13 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CBall_B.h" />
+    <ClInclude Include="CBall_G.h" />
+    <ClInclude Include="CBall_I.h" />
+    <ClInclude Include="CBall_O.h" />
+    <ClInclude Include="CBall_P.h" />
+    <ClInclude Include="CBall_R.h" />
+    <ClInclude Include="CBall_Y.h" />
     <ClInclude Include="CBillBoard.h" />
     <ClInclude Include="CBlock.h" />
     <ClInclude Include="CBullet.h" />

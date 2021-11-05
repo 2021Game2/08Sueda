@@ -1,15 +1,17 @@
-#include "CCube_R.h"
+#include "CBall_R.h"
 #include "CSceneGame.h"
 #include "CTaskManager.h"
-#include "CWall_R.h"
-#define OBJ "cube.obj"  //モデルのファイル
-#define MTL "cube.mtl"  //モデルのマテリアルファイル
+#define OBJ "sphere.obj"  //モデルのファイル
+#define MTL "sphere.mtl"  //モデルのマテリアルファイル
+#define HP 1	//耐久値
 
-CModel CCube_R::mModel;  //モデルデータ作成
+CModel CBall_R::mModel;  //モデルデータ作成
+CBall_R* CBall_R::spInstance = 0;
 
 //デフォルトコンストラクタ
-CCube_R::CCube_R()
-	:mCollider(this, &mMatrix, CVector(0.0f, 1.0f, 0.0f), 1.5f)
+CBall_R::CBall_R()
+	:mCollider(this, &mMatrix, CVector(), 1.0f)
+	, mHp(HP)
 {
 	//モデルがないときは読み込む
 	if (mModel.mTriangles.size() == 0)
@@ -23,12 +25,14 @@ CCube_R::CCube_R()
 	mpModel->mpMaterials[0]->mDiffuse[0] = 10.0f;  //R 赤
 	mpModel->mpMaterials[0]->mDiffuse[1] = 0.0f;   //G 緑
 	mpModel->mpMaterials[0]->mDiffuse[2] = 0.0f;   //B 青
+
+	spInstance = this;
 }
 
 //コンストラクタ
-//CCube_R(位置、回転、拡縮)
-CCube_R::CCube_R(const CVector& position, const CVector& rotation, const CVector& scale)
-	:CCube_R()
+//CBall_R(位置、回転、拡縮)
+CBall_R::CBall_R(const CVector& position, const CVector& rotation, const CVector& scale)
+	:CBall_R()
 {
 	//位置、回転、拡縮を設定する
 	mPosition = position;   //位置の設定
@@ -41,16 +45,23 @@ CCube_R::CCube_R(const CVector& position, const CVector& rotation, const CVector
 	CTaskManager::Get()->Add(this); //追加する
 }
 
-void CCube_R::Collision(CCollider* m, CCollider* o)
+void CBall_R::Collision(CCollider* m, CCollider* o)
 {
-	//相手のコライダタイプの判定
-	switch (o->mType)
+	if (m->mType == CCollider::ESPHERE)
 	{
-	case CCollider::ESPHERE:
-		if (CCollider::Collision(m, o)) {
-			mEnabled = false;
-			CWall_R::spInstance->mEnabled = false;
+		if (o->mType == CCollider::ESPHERE)
+		{
+			if (o->mpParent->mTag == EPLAYER)
+			{
+				if (o->mTag == CCollider::ESWORD)
+				{
+					if (CCollider::Collision(m, o))
+					{
+						mHp--;
+						mEnabled = false;
+					}
+				}
+			}
 		}
-		break;
 	}
 }

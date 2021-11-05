@@ -34,9 +34,6 @@ CCube_Y::CCube_Y(const CVector& position, const CVector& rotation, const CVector
 	mPosition = position;   //ˆÊ’u‚Ìİ’è
 	mRotation = rotation;   //‰ñ“]‚Ìİ’è
 	mScale = scale;         //Šgk‚Ìİ’è
-	if (mScale.mX == 0.0f)mScale.mX = 1.0f;
-	if (mScale.mY == 0.0f)mScale.mY = 1.0f;
-	if (mScale.mZ == 0.0f)mScale.mZ = 1.0f;
 	CTransform::Update();
 	//—Dæ“x‚ğ1‚É•ÏX‚·‚é
 	mPriority = 1;

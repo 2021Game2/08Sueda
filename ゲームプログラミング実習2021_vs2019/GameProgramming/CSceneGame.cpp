@@ -30,6 +30,14 @@
 #include "CCube_B.h"
 #include "CCube_I.h"
 #include "CCube_P.h"
+//
+#include "CBall_R.h"
+#include "CBall_O.h"
+#include "CBall_Y.h"
+#include "CBall_G.h"
+#include "CBall_B.h"
+#include "CBall_I.h"
+#include "CBall_P.h"
 
 CMatrix Matrix;
 
@@ -136,6 +144,14 @@ void CSceneGame::Init() {
 	new CCube_B(CVector(-75.0f, 0.0f, 95.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //青
 	new CCube_I(CVector(-65.0f, 0.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //藍
 	new CCube_P(CVector(95.0f, 0.0f, -95.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //紫
+	//ボールの配置
+	new CBall_R(CVector(60.0f, 6.0f, -70.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤
+	new CBall_O(CVector(-95.0f, 1.0f, 25.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //橙
+	new CBall_Y(CVector(-15.0f, 1.0f, -90.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //黄
+	new CBall_G(CVector(55.0f, 4.0f, 80.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //緑
+	new CBall_B(CVector(-30.0f, 6.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //青
+	new CBall_I(CVector(40.0f, 6.0f, 15.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //藍
+	new CBall_P(CVector(-85.0f, 1.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //紫
 }
 
 
