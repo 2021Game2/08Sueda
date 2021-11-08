@@ -1,9 +1,11 @@
 #include "CBullet.h"
 #include "CCollisionManager.h"
+#define FIRECOUNT 60
 
 CBullet::CBullet()
 : mLife(50)
 , mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.1f)
+, mFireCount(FIRECOUNT)
 {}
 
 //幅と奥行きの設定
@@ -19,6 +21,9 @@ void CBullet::Set(float w, float d) {
 
 //更新
 void CBullet::Update() {
+	if (mFireCount > 0) {
+		mFireCount--;
+	}
 	//生存時間の判定
 	if (mLife-- > 0) {
 		CTransform::Update();
@@ -33,8 +38,8 @@ void CBullet::Update() {
 
 //描画
 void CBullet::Render() {
-	//DIFFUSE黄色設定
-	float c[] = { 1.0f, 1.0f, 0.0f, 1.0f };
+	//DIFFUSE灰色設定
+	float c[] = { 0.5f, 0.5f, 0.5f, 1.0f };
 	glMaterialfv(GL_FRONT, GL_DIFFUSE, c);
 	//三角形描画→12
 	mT.Render(mMatrix);

@@ -1,6 +1,7 @@
 #include "CBall_R.h"
 #include "CSceneGame.h"
 #include "CTaskManager.h"
+#include "CBullet.h"
 #define OBJ "sphere.obj"  //モデルのファイル
 #define MTL "sphere.mtl"  //モデルのマテリアルファイル
 #define HP 1	//耐久値
@@ -43,6 +44,23 @@ CBall_R::CBall_R(const CVector& position, const CVector& rotation, const CVector
 	mPriority = 1;
 	CTaskManager::Get()->Remove(this); //削除して
 	CTaskManager::Get()->Add(this); //追加する
+}
+
+void CBall_R::Update() {
+	//弾を北へ発射します
+//	CBullet* bullet1 = new CBullet();
+//	bullet1->Set(0.1f, 1.5f);
+//	bullet1->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
+//	bullet1->mRotation = mRotation;
+//	bullet1->mFireCount = 60;
+//	bullet1->Update();
+	//弾を南へ発射します
+//	CBullet* bullet2 = new CBullet();
+//	bullet2->Set(0.1f, 1.5f);
+//	bullet2->mPosition = CVector(0.0f, 0.0f, -10.0f) * mMatrix;
+//	bullet2->mRotation = mRotation;
+//	bullet2->mFireCount = 60;
+//	bullet2->Update();
 }
 
 void CBall_R::Collision(CCollider* m, CCollider* o)

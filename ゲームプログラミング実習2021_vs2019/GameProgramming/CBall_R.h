@@ -16,8 +16,10 @@ public:
 	CBall_R(const CVector& position, const CVector& rotation, const CVector& scale);
 	//衝突処理
 	void Collision(CCollider* m, CCollider* o);
-
-	int mHp;	//ヒットポイント
+	//更新処理のオーバーライド
+	void Update();
+	//ヒットポイント
+	int mHp;
 };
 
 #endif

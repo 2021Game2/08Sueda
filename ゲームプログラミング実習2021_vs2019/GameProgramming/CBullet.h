@@ -15,6 +15,8 @@ public:
 	CCollider mCollider;
 	//¶‘¶ŠÔ
 	int mLife;
+	//”­ËŠÔŠu
+	int mFireCount;
 	//OŠpŒ`
 	CTriangle mT;
 	//
