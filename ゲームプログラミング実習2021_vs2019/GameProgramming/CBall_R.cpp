@@ -48,19 +48,19 @@ CBall_R::CBall_R(const CVector& position, const CVector& rotation, const CVector
 
 void CBall_R::Update() {
 	//’e‚ð–k‚Ö”­ŽË‚µ‚Ü‚·
-//	CBullet* bullet1 = new CBullet();
-//	bullet1->Set(0.1f, 1.5f);
-//	bullet1->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
-//	bullet1->mRotation = mRotation;
-//	bullet1->mFireCount = 60;
-//	bullet1->Update();
+	CBullet* bullet1 = new CBullet();
+	bullet1->Set(0.1f, 1.5f);
+	bullet1->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
+	bullet1->mRotation = mRotation;
+	bullet1->mFireCount = 60;
+	bullet1->Update();
 	//’e‚ð“ì‚Ö”­ŽË‚µ‚Ü‚·
-//	CBullet* bullet2 = new CBullet();
-//	bullet2->Set(0.1f, 1.5f);
-//	bullet2->mPosition = CVector(0.0f, 0.0f, -10.0f) * mMatrix;
-//	bullet2->mRotation = mRotation;
-//	bullet2->mFireCount = 60;
-//	bullet2->Update();
+	CBullet* bullet2 = new CBullet();
+	bullet2->Set(0.1f, 1.5f);
+	bullet2->mPosition = CVector(0.0f, 0.0f, -10.0f) * mMatrix;
+	bullet2->mRotation = mRotation;
+	bullet2->mFireCount = 60;
+	bullet2->Update();
 }
 
 void CBall_R::Collision(CCollider* m, CCollider* o)

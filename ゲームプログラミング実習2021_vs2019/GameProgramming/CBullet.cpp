@@ -49,34 +49,16 @@ void CBullet::Render() {
 //衝突処理
 //Collision(コライダ1, コライダ2)
 void CBullet::Collision(CCollider *m, CCollider *o) {
-	//相手がサーチの時は戻る
-	if (o->mTag == CCollider::ESEARCH)
+	switch (o->mType)
 	{
-		return;
-	}
-
-	//コライダのmとyが衝突しているか判定
-	if (CCollider::Collision(m, o)) {
-		//衝突している時は無効にする
-		mEnabled = false;
-	}
-
-	return;
-
-	if (m->mType == CCollider::ESPHERE
-		&& o->mType == CCollider::ESPHERE)
-	{
-		switch (o->mTag)
+	case CCollider::ETRIANGLE: //三角コライダの時
+		CVector adjust;  //調整値
+		//三角コライダと球コライダの衝突判定
+		if (CCollider::CollisionTriangleSphere(o, m, &adjust))
 		{
-		case CCollider::ESEARCH:
-			break;
-		default:
-			//コライダのmとyが衝突しているか判定
-			if (CCollider::Collision(m, o)) {
-				//衝突している時は無効にする
-				mEnabled = false;
-			}
+			mEnabled = false;
 		}
+		break;
 	}
 }
 void CBullet::TaskCollision()

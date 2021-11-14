@@ -29,7 +29,7 @@ public:
 	//ジャンプフラグ
 	int mJump;
 	//ジャンプ用速度
-	int mVj;
+	float mVj;
 };
 
 #endif

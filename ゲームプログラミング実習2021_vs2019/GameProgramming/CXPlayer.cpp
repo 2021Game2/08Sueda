@@ -1,14 +1,14 @@
 #include "CXPlayer.h"
 #include "CKey.h"
 #define G 0.1     //重力
-#define VJ0 2   //ジャンプ力
+#define VJ0 1.5   //ジャンプ力
 
 CXPlayer::CXPlayer()
 	: mColSphereBody(this, nullptr, CVector(), 0.5f)
 	, mColSphereHead(this, nullptr, CVector(0.0f, 5.0f, -3.0f), 0.5f)
 	, mColSphereSword(this, nullptr, CVector(-10.0f, 10.0f, 50.0f), 0.3f)
-	, mColSphereLegs_L(this, nullptr, CVector(-5.0f, -5.0f, 0.0f), 0.5f)
-	, mColSphereLegs_R(this, nullptr, CVector(5.0f, -5.0f, 0.0f), 0.5f)
+	, mColSphereLegs_L(this, nullptr, CVector(-5.0f, -5.0f, 0.0f), 0.6f)
+	, mColSphereLegs_R(this, nullptr, CVector(5.0f, -5.0f, 0.0f), 0.6f)
 	,mVj(0)
 	,mJump(0)
 {
@@ -36,6 +36,22 @@ void CXPlayer::Init(CModelX* model)
 
 void CXPlayer::Update()
 {
+	//ジャンプ攻撃
+	if (mJump == 0 && CKey::Push('J'))
+	{
+		mVj = VJ0;   //ジャンプ力を速度に設定
+		mJump++;     //フラグに1加算
+		ChangeAnimation(7, true, 30);
+	}
+	if (CKey::Push('W'))
+	{
+		mPosition += CVector(0.0f, 0.0f, 0.1f) * mMatrixRotate;
+	}
+	//速度に重力加速度加算
+	mVj -= G;
+	//速度分移動
+	mPosition.mY += mVj;
+
 	//攻撃アニメーション
 	if (mAnimationIndex == 3)
 	{
@@ -83,13 +99,6 @@ void CXPlayer::Update()
 		{
 			ChangeAnimation(3, true, 30);
 		}
-		//ジャンプ攻撃
-		else if (mJump == 0 && CKey::Push('J'))
-		{
-			mVj = VJ0;   //ジャンプ力を速度に設定
-			mJump++;     //フラグに1加算
-			ChangeAnimation(7, true, 30);
-		}
 		//移動
 		else if (CKey::Push('W'))
 		{
@@ -100,10 +109,6 @@ void CXPlayer::Update()
 		else {
 			ChangeAnimation(0, true, 60);
 		}
-		    //速度に重力加速度加算
-			mVj -= G;
-			//速度分移動
-			mPosition.mY += mVj;
 	}
 	CXCharacter::Update();
 }
@@ -121,11 +126,8 @@ void CXPlayer::Collision(CCollider* m, CCollider* o) {
 			mPosition = mPosition + adjust;
 			//着地
 			mVj = 0;   //ジャンプ速度0
-//			if (mPosition.mY > 0)
-//			{
-				//ジャンプ可能
-				mJump = 0;
-//			}
+			//ジャンプ可能
+			mJump = 0;
 		}
 		break;
 	}
