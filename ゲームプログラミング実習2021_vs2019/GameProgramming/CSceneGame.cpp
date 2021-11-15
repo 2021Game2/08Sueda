@@ -145,8 +145,8 @@ void CSceneGame::Init() {
 	new CCube_I(CVector(-65.0f, 0.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //藍
 	new CCube_P(CVector(95.0f, 0.0f, -95.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //紫
 	//ボールの配置
-//	new CBall_R(CVector(60.0f, 6.0f, -70.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤
-	new CBall_R(CVector(5.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤(仮)
+	new CBall_R(CVector(60.0f, 6.0f, -70.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤
+//	new CBall_R(CVector(5.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤(仮)
 	new CBall_O(CVector(-15.0f, 1.0f, -90.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //橙
 	new CBall_Y(CVector(-95.0f, 1.0f, 25.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //黄
 	new CBall_G(CVector(55.0f, 4.0f, 80.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //緑
