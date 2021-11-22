@@ -6,6 +6,7 @@
 #include "CMap.h"
 #include "CColliderTriangle.h"
 #include "CColliderMesh.h"
+#include "CText.h"
 /*
 ゲームのシーン
 */
@@ -20,11 +21,19 @@ private:
 	CColliderTriangle mColliderTriangle;
 	CColliderTriangle mColliderTriangle2;
 public:
+	CText mText;
+
+	static int Time;
+	//デフォルトコンストラクタ
+	CSceneGame();
+	//デストラクタ
 	~CSceneGame();
 	//初期化処理のオーバーライド
 	void Init();
 	//更新処理のオーバーライド
 	void Update();
+	//描画処理
+	void Render();
 
 };
 

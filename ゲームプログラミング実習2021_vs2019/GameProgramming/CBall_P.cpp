@@ -7,6 +7,7 @@
 #define HP 1	//耐久値
 
 CModel CBall_P::mModel;  //モデルデータ作成
+CBall_P* CBall_P::spInstance = 0;
 
 //デフォルトコンストラクタ
 CBall_P::CBall_P()
@@ -25,6 +26,8 @@ CBall_P::CBall_P()
 	mpModel->mpMaterials[0]->mDiffuse[0] = 10.0f;    //R 赤
 	mpModel->mpMaterials[0]->mDiffuse[1] = 0.0f;     //G 緑
 	mpModel->mpMaterials[0]->mDiffuse[2] = 10.0f;    //B 青
+
+	spInstance = this;
 }
 
 //コンストラクタ

@@ -5,6 +5,7 @@
 
 class CBall_P :public CCharacter {
 public:
+	static CBall_P* spInstance;
 	//モデルデータ
 	static CModel mModel;
 	//コライダを生成

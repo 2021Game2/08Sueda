@@ -12,6 +12,8 @@
 //
 #include "CCollisionManager.h"
 //
+#include "CTask.h"
+//
 #include "CWall.h"
 #include "CWall_R.h"
 #include "CWall_O.h"
@@ -40,14 +42,20 @@
 #include "CBall_P.h"
 
 CMatrix Matrix;
+int CSceneGame::Time = 0 * 60;
+
+CSceneGame::CSceneGame()
+{
+	//ƒeƒLƒXƒgƒtƒHƒ“ƒg‚Ì“Ç‚Ýž‚Ý‚ÆÝ’è
+	mText.LoadTexture("FontWhite.tga", 1, 64);
+}
 
 CSceneGame::~CSceneGame() {
 
 }
 
 void CSceneGame::Init() {
-	//ƒeƒLƒXƒgƒtƒHƒ“ƒg‚Ì“Ç‚Ýž‚Ý‚ÆÝ’è
-	mFont.LoadTexture("FontG.png", 1, 4096 / 64);
+	Time = 0 * 60;
 
 	CRes::sModelX.Load(MODEL_FILE);
 	CRes::sKnight.Load("knight\\knight_low.x");
@@ -145,14 +153,20 @@ void CSceneGame::Init() {
 	new CCube_I(CVector(-65.0f, 0.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //—•
 	new CCube_P(CVector(95.0f, 0.0f, -95.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //Ž‡
 	//ƒ{[ƒ‹‚Ì”z’u
-	new CBall_R(CVector(60.0f, 6.0f, -70.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //Ô
-//	new CBall_R(CVector(5.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //Ô(‰¼)
-	new CBall_O(CVector(-15.0f, 1.0f, -90.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //žò
-	new CBall_Y(CVector(-95.0f, 1.0f, 25.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //‰©
-	new CBall_G(CVector(55.0f, 4.0f, 80.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //—Î
-	new CBall_B(CVector(-30.0f, 6.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //Â
-	new CBall_I(CVector(40.0f, 6.0f, 15.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //—•
-	new CBall_P(CVector(-85.0f, 1.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //Ž‡
+//	new CBall_R(CVector(60.0f, 6.0f, -70.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //Ô
+	new CBall_R(CVector(5.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //Ô(‰¼)
+//	new CBall_O(CVector(-15.0f, 1.0f, -90.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //žò
+	new CBall_O(CVector(5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //žò(‰¼)
+//	new CBall_Y(CVector(-95.0f, 1.0f, 25.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //‰©
+	new CBall_Y(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //‰©(‰¼)
+//	new CBall_G(CVector(55.0f, 4.0f, 80.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //—Î
+	new CBall_G(CVector(0.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //—Î(‰¼)
+//	new CBall_B(CVector(-30.0f, 6.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //Â
+	new CBall_B(CVector(0.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //Â(‰¼)
+//	new CBall_I(CVector(40.0f, 6.0f, 15.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //—•
+	new CBall_I(CVector(-5.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //—•(‰¼)
+//	new CBall_P(CVector(-85.0f, 1.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //Ž‡
+	new CBall_P(CVector(-5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //Ž‡(‰¼)
 }
 
 
@@ -213,14 +227,115 @@ void CSceneGame::Update() {
 	//ƒRƒ‰ƒCƒ_‚Ì•`‰æ
 	CCollisionManager::Get()->Render();
 
-	//2D•`‰æŠJŽn
-	CUtil::Start2D(0, 800, 0, 600);
-
-	mFont.DrawString("3D PROGRAMMING", 20, 20, 10, 12);
-
-	//2D‚Ì•`‰æI—¹
-	CUtil::End2D();
+	//e‚Ì•`‰æˆ—
+	CSceneGame::Render();
 
 	return;
 }
 
+void CSceneGame::Render() {
+	//2D•`‰æŠJŽn
+	CUtil::Start2D(0, 800, 0, 600);
+	//•¶Žš•ÒWƒGƒŠƒA‚Ìì¬
+	char buf[64];
+	//•`‰æF‚ÌÝ’è(”’)
+	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+	//ŽžŠÔ‚Ì•\Ž¦
+	sprintf(buf, "TIME %d", Time / 60);
+	if (Time > -1) {
+		Time++;
+	}
+	mText.DrawString(buf, 550, 20, 16, 16);
+
+	//‘S‚Ä‚Ìƒ{[ƒ‹‚ð”j‰ó‚·‚é‚ÆƒQ[ƒ€ƒNƒŠƒA
+	if (CBall_P::spInstance->mHp <= 0) {
+		//•`‰æF‚ÌÝ’è(”’)
+		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+		mText.DrawString("GAME CLEAR!!", 70, 300, 30, 30);
+		Time--;
+	}
+	//Ž‡¨ƒNƒŠƒA!
+	else if (CBall_I::spInstance->mHp <= 0) {
+		//•`‰æF‚ÌÝ’è(Ž‡)
+		glColor4f(1.0f, 0.0f, 1.0f, 1.0f);
+		mText.DrawString("PURPLE", 20, 20, 16, 16);
+		//•`‰æF‚ÌÝ’è(”’)
+		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+		mText.DrawString("NEXT", 215, 18, 10, 10);
+		mText.DrawString("CLEAR!", 305, 20, 16, 16);
+	}
+	//—•¨Ž‡
+	else if (CBall_B::spInstance->mHp <= 0) {
+		//•`‰æF‚ÌÝ’è(—•)
+		glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+		mText.DrawString("INDIGO", 20, 20, 16, 16);
+		//•`‰æF‚ÌÝ’è(”’)
+		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+		mText.DrawString("NEXT", 215, 18, 10, 10);
+		//•`‰æF‚ÌÝ’è(Ž‡)
+		glColor4f(1.0f, 0.0f, 1.0f, 1.0f);
+		mText.DrawString("PURPLE", 305, 20, 16, 16);
+	}
+	//Â¨—•
+	else if (CBall_G::spInstance->mHp <= 0) {
+		//•`‰æF‚ÌÝ’è(Â)
+		glColor4f(0.0f, 0.5f, 1.0f, 1.0f);
+		mText.DrawString("BRUE", 20, 20, 16, 16);
+		//•`‰æF‚ÌÝ’è(”’)
+		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+		mText.DrawString("NEXT", 150, 18, 10, 10);
+		//•`‰æF‚ÌÝ’è(—•)
+		glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+		mText.DrawString("INDIGO", 235, 20, 16, 16);
+	}
+	//—Î¨Â
+	else if (CBall_Y::spInstance->mHp <= 0) {
+		//•`‰æF‚ÌÝ’è(—Î)
+		glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+		mText.DrawString("GREEN", 20, 20, 16, 16);
+		//•`‰æF‚ÌÝ’è(”’)
+		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+		mText.DrawString("NEXT", 180, 18, 10, 10);
+		//•`‰æF‚ÌÝ’è(Â)
+		glColor4f(0.0f, 0.5f, 1.0f, 1.0f);
+		mText.DrawString("BRUE", 270, 20, 16, 16);
+	}
+	//‰©¨—Î
+	else if (CBall_O::spInstance->mHp <= 0) {
+		//•`‰æF‚ÌÝ’è(‰©)
+		glColor4f(1.0f, 1.0f, 0.0f, 1.0f);
+		mText.DrawString("YELLOW", 20, 20, 16, 16);
+		//•`‰æF‚ÌÝ’è(”’)
+		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+		mText.DrawString("NEXT", 215, 18, 10, 10);
+		//•`‰æF‚ÌÝ’è(—Î)
+		glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+		mText.DrawString("GREEN", 305, 20, 16, 16);
+	}
+	//žò¨‰©
+	else if (CBall_R::spInstance->mHp <= 0) {
+		//•`‰æF‚ÌÝ’è(žò)
+		glColor4f(1.0f, 0.5f, 0.0f, 1.0f);
+		mText.DrawString("ORANGE", 20, 20, 16, 16);
+		//•`‰æF‚ÌÝ’è(”’)
+		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+		mText.DrawString("NEXT", 215, 18, 10, 10);
+		//•`‰æF‚ÌÝ’è(‰©)
+		glColor4f(1.0f, 1.0f, 0.0f, 1.0f);
+		mText.DrawString("YELLOW", 300, 20, 16, 16);
+	}
+	else {
+		//Ô¨žò
+		//•`‰æF‚ÌÝ’è(Ô)
+		glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
+		mText.DrawString("RED", 20, 20, 16, 16);
+		//•`‰æF‚ÌÝ’è(”’)
+		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+		mText.DrawString("NEXT", 120, 18, 10, 10);
+		//•`‰æF‚ÌÝ’è(žò)
+		glColor4f(1.0f, 0.5f, 0.0f, 1.0f);
+		mText.DrawString("ORANGE", 210, 20, 16, 16);
+	}
+	//2D‚Ì•`‰æI—¹
+	CUtil::End2D();
+}
