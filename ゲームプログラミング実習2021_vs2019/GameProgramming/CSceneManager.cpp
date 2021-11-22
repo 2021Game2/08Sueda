@@ -1,5 +1,6 @@
 #include "CSceneManager.h"
 #include "CSceneGame.h"
+#include "CSceneTitle.h"
 
 //コンストラクタ
 CSceneManager::CSceneManager()
@@ -15,8 +16,10 @@ CSceneManager::~CSceneManager() {
 }
 //初期化処理
 void CSceneManager::Init() {
+	//シーンの識別を設定する
+	mScene = CScene::ETITLE;
 	//シーンを生成し、ポインタを設定する
-	mpScene = new CSceneGame();
+	mpScene = new CSceneTitle();
 	//生成したクラスのメソッドが呼ばれる
 	mpScene->Init();
 }
@@ -24,4 +27,20 @@ void CSceneManager::Init() {
 void CSceneManager::Update() {
 	//ポインタのUpdateを呼ぶ
 	mpScene->Update();
+	//次のシーンを取得し異なるか判定
+	if (mScene != mpScene->GetNextScene()) {
+		mScene = mpScene->GetNextScene();
+		delete mpScene; //今のシーン削除
+		//該当するシーンを生成
+		switch (mScene) {
+		case CScene::EGAME:
+			mpScene = new CSceneGame();
+			mpScene->Init();
+			break;
+		case CScene::ETITLE:
+			mpScene = new CSceneTitle();
+			mpScene->Init();
+			break;
+		}
+	}
 }

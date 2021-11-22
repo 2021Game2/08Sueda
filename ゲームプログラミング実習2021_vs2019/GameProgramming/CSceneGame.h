@@ -34,7 +34,8 @@ public:
 	void Update();
 	//•`‰æˆ—
 	void Render();
-
+	//Ÿ‚ÌƒV[ƒ“‚Ìæ“¾
+	EScene GetNextScene();
 };
 
 #endif

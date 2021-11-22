@@ -167,6 +167,9 @@ void CSceneGame::Init() {
 	new CBall_I(CVector(-5.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //藍(仮)
 //	new CBall_P(CVector(-85.0f, 1.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //紫
 	new CBall_P(CVector(-5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //紫(仮)
+
+	//シーンの設定
+	mScene = EGAME;
 }
 
 
@@ -252,7 +255,11 @@ void CSceneGame::Render() {
 		//描画色の設定(白)
 		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
 		mText.DrawString("GAME CLEAR!!", 70, 300, 30, 30);
+		mText.DrawString("PUSH ENTER KEY", 180, 200, 16, 16);
 		Time--;
+		if (CKey::Once(VK_RETURN)) {
+			mScene = ETITLE;
+		}
 	}
 	//紫→クリア!
 	else if (CBall_I::spInstance->mHp <= 0) {
@@ -338,4 +345,9 @@ void CSceneGame::Render() {
 	}
 	//2Dの描画終了
 	CUtil::End2D();
+}
+
+//次のシーンの取得
+CScene::EScene CSceneGame::GetNextScene() {
+	return mScene;
 }
