@@ -14,6 +14,8 @@
 //
 #include "CTask.h"
 //
+#include "CSound.h"
+//
 #include "CWall.h"
 #include "CWall_R.h"
 #include "CWall_O.h"
@@ -43,6 +45,7 @@
 
 CMatrix Matrix;
 int CSceneGame::Time = 0 * 60;
+CSound Se;
 
 CSceneGame::CSceneGame()
 {
@@ -55,6 +58,8 @@ CSceneGame::~CSceneGame() {
 }
 
 void CSceneGame::Init() {
+	//サウンドファイルの読み込み
+	Se.Load("Explosion.wav");
 	Time = 0 * 60;
 
 	CRes::sModelX.Load(MODEL_FILE);
@@ -153,20 +158,20 @@ void CSceneGame::Init() {
 	new CCube_I(CVector(-65.0f, 0.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //藍
 	new CCube_P(CVector(95.0f, 0.0f, -95.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //紫
 	//ボールの配置
-//	new CBall_R(CVector(60.0f, 6.0f, -70.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤
-	new CBall_R(CVector(5.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤(仮)
-//	new CBall_O(CVector(-15.0f, 1.0f, -90.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //橙
-	new CBall_O(CVector(5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //橙(仮)
-//	new CBall_Y(CVector(-95.0f, 1.0f, 25.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //黄
-	new CBall_Y(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //黄(仮)
-//	new CBall_G(CVector(55.0f, 4.0f, 80.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //緑
-	new CBall_G(CVector(0.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //緑(仮)
-//	new CBall_B(CVector(-30.0f, 6.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //青
-	new CBall_B(CVector(0.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //青(仮)
-//	new CBall_I(CVector(40.0f, 6.0f, 15.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //藍
-	new CBall_I(CVector(-5.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //藍(仮)
-//	new CBall_P(CVector(-85.0f, 1.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //紫
-	new CBall_P(CVector(-5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //紫(仮)
+	new CBall_R(CVector(60.0f, 6.0f, -70.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤
+//	new CBall_R(CVector(5.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤(仮)
+	new CBall_O(CVector(-15.0f, 1.0f, -90.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //橙
+//	new CBall_O(CVector(5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //橙(仮)
+	new CBall_Y(CVector(-95.0f, 1.0f, 25.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //黄
+//	new CBall_Y(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //黄(仮)
+	new CBall_G(CVector(55.0f, 4.0f, 80.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //緑
+//	new CBall_G(CVector(0.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //緑(仮)
+	new CBall_B(CVector(-30.0f, 6.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //青
+//	new CBall_B(CVector(0.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //青(仮)
+	new CBall_I(CVector(40.0f, 6.0f, 15.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //藍
+//	new CBall_I(CVector(-5.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //藍(仮)
+	new CBall_P(CVector(-85.0f, 1.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //紫
+//	new CBall_P(CVector(-5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //紫(仮)
 
 	//シーンの設定
 	mScene = EGAME;

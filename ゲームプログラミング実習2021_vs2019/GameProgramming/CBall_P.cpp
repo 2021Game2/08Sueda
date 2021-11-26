@@ -2,12 +2,15 @@
 #include "CSceneGame.h"
 #include "CTaskManager.h"
 #include "CBall_I.h"
+#include "CSound.h"
 #define OBJ "sphere.obj"  //モデルのファイル
 #define MTL "sphere.mtl"  //モデルのマテリアルファイル
 #define HP 1	//耐久値
 
 CModel CBall_P::mModel;  //モデルデータ作成
 CBall_P* CBall_P::spInstance = 0;
+//外部変数の参照の作成
+extern CSound Se;
 
 //デフォルトコンストラクタ
 CBall_P::CBall_P()
@@ -60,6 +63,7 @@ void CBall_P::Collision(CCollider* m, CCollider* o)
 					{
 						if (CBall_I::spInstance->mHp <= 0)
 						{
+							Se.Play();
 							mHp--;
 							mEnabled = false;
 						}
