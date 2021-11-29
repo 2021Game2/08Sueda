@@ -1,7 +1,11 @@
 #include "CXPlayer.h"
 #include "CKey.h"
+#include "CSound.h"
 #define G 0.1     //重力
 #define VJ0 1.5   //ジャンプ力
+
+//外部変数の参照の作成
+extern CSound Se3;
 
 CXPlayer::CXPlayer()
 	: mColSphereBody(this, nullptr, CVector(), 0.5f)
@@ -42,6 +46,7 @@ void CXPlayer::Update()
 		mVj = VJ0;   //ジャンプ力を速度に設定
 		mJump++;     //フラグに1加算
 		ChangeAnimation(7, true, 30);
+		Se3.Play();
 	}
 	if (CKey::Push('W'))
 	{

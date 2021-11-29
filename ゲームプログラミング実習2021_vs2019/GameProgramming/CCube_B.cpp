@@ -2,10 +2,12 @@
 #include "CSceneGame.h"
 #include "CTaskManager.h"
 #include "CWall_B.h"
+#include "CSound.h"
 #define OBJ "cube.obj"  //モデルのファイル
 #define MTL "cube.mtl"  //モデルのマテリアルファイル
 
 CModel CCube_B::mModel;  //モデルデータ作成
+extern CSound Se2;       //外部変数の参照の作成
 
 //デフォルトコンストラクタ
 CCube_B::CCube_B()
@@ -50,6 +52,7 @@ void CCube_B::Collision(CCollider* m, CCollider* o)
 		if (CCollider::Collision(m, o)) {
 			mEnabled = false;
 			CWall_B::spInstance->mEnabled = false;
+			Se2.Play();
 		}
 		break;
 	}

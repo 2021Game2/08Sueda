@@ -1,10 +1,12 @@
 #ifndef CCAMERA_H
 #define CCAMERA_H
 #include "CVector.h"
+#include "CXCharacter.h"
+#include "CCollider.h"
 /*
 カメラクラス
 */
-class CCamera {
+class CCamera : public CXCharacter {
 public:
 	//視点
 	CVector mEye;
@@ -12,12 +14,19 @@ public:
 	CVector mCenter;
 	//上方向
 	CVector mUp;
+	//コライダ
+	CCollider mCollider;
 	//カメラの設定
 	//Set(視点, 注視点, 上方向)
 	void Set(const CVector &eye, const CVector &center,
 		const CVector &up);
+	//衝突処理
+	//Collision(コライダ1, コライダ2)
+	void Collision(CCollider* m, CCollider* o);
 	//カメラ適用
 	void Render();
+	//デフォルトコンストラクタ
+	CCamera();
 };
 
 //カメラの外部参照
