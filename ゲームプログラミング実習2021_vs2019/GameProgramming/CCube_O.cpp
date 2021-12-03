@@ -37,23 +37,26 @@ CCube_O::CCube_O(const CVector& position, const CVector& rotation, const CVector
 	mRotation = rotation;   //‰ñ“]‚Ìİ’è
 	mScale = scale;         //Šgk‚Ìİ’è
 	CTransform::Update();
-	//—Dæ“x‚ğ1‚É•ÏX‚·‚é
-	mPriority = 1;
-	CTaskManager::Get()->Remove(this); //íœ‚µ‚Ä
-	CTaskManager::Get()->Add(this); //’Ç‰Á‚·‚é
 }
 
 void CCube_O::Collision(CCollider* m, CCollider* o)
 {
-	//‘Šè‚ÌƒRƒ‰ƒCƒ_ƒ^ƒCƒv‚Ì”»’è
-	switch (o->mType)
+	if (m->mType == CCollider::ESPHERE)
 	{
-	case CCollider::ESPHERE:
-		if (CCollider::Collision(m, o)) {
-			mEnabled = false;
-			CWall_O::spInstance->mEnabled = false;
-			Se2.Play();
+		if (o->mType == CCollider::ESPHERE)
+		{
+			if (o->mpParent->mTag == EPLAYER)
+			{
+				if (o->mTag == CCollider::EBODY)
+				{
+					if (CCollider::Collision(m, o))
+					{
+						mEnabled = false;
+						CWall_O::spInstance->mEnabled = false;
+						Se2.Play();
+					}
+				}
+			}
 		}
-		break;
 	}
 }

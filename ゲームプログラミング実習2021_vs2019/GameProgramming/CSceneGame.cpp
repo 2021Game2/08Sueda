@@ -56,7 +56,7 @@ CSceneGame::CSceneGame()
 }
 
 CSceneGame::~CSceneGame() {
-
+	
 }
 
 void CSceneGame::Init() {
@@ -191,9 +191,6 @@ void CSceneGame::Update() {
 //	mEnemy.Update();
 	CTaskManager::Get()->Update();
 
-	//衝突処理
-	CCollisionManager::Get()->Collision();
-
 	//カメラのパラメータを作成する
 	CVector e, c, u;//視点、注視点、上方向
 	//視点を求める
@@ -205,6 +202,9 @@ void CSceneGame::Update() {
 
 	//カメラクラスの設定
 	Camera.Set(e, c, u);
+	//衝突処理
+	CCollisionManager::Get()->Collision();
+
 	Camera.Render();
 
 	//X軸＋回転

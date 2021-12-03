@@ -106,4 +106,3 @@ void CTaskManager::TaskCollision()
 		task = task->mpNext;
 	}
 }
-

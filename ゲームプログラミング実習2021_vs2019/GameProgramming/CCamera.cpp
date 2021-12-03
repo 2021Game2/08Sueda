@@ -1,14 +1,16 @@
 #include "CCamera.h"
 #include "CCollider.h"
+#include "CTaskManager.h"
 #include "glut.h"
 
 //カメラの外部変数
 CCamera Camera;
 
+//デフォルトコンストラクタ
 CCamera::CCamera()
-	: mCollider(this, nullptr, CVector(0.0f, 0.0f, 0.0f), 0.4f)
+	: mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 1.0f)
 {
-
+	
 }
 
 void CCamera::Set(const CVector &eye, const CVector &center,
@@ -22,6 +24,14 @@ void CCamera::Render() {
 	gluLookAt(mEye.mX, mEye.mY, mEye.mZ,
 		mCenter.mX, mCenter.mY, mCenter.mZ,
 		mUp.mX, mUp.mY, mUp.mZ);
+
+//	mPriority = 1;
+//	CTaskManager::Get()->Remove(this);
+//	CTaskManager::Get()->Add(this);
+}
+
+void CCamera::Update() {
+	CTransform::Update();
 }
 
 //衝突処理

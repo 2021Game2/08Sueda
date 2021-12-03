@@ -4,7 +4,10 @@
 //描画処理
 void CCharacter::Render()
 {
-	mpModel->Render(mMatrix);
+	if (mpModel != nullptr)
+	{
+		mpModel->Render(mMatrix);
+	}
 }
 
 CCharacter::~CCharacter() {
@@ -14,6 +17,7 @@ CCharacter::~CCharacter() {
 
 CCharacter::CCharacter()
 :mTag(EZERO)
+,mpModel(nullptr)
 {
 	//タスクリストに追加
 	CTaskManager::Get()->Add(this);

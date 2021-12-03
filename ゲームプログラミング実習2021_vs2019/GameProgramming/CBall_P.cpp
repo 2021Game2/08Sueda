@@ -43,10 +43,6 @@ CBall_P::CBall_P(const CVector& position, const CVector& rotation, const CVector
 	mRotation = rotation;   //‰ñ“]‚ÌÝ’è
 	mScale = scale;         //Šgk‚ÌÝ’è
 	CTransform::Update();
-	//—Dæ“x‚ð1‚É•ÏX‚·‚é
-	mPriority = 1;
-	CTaskManager::Get()->Remove(this); //íœ‚µ‚Ä
-	CTaskManager::Get()->Add(this); //’Ç‰Á‚·‚é
 }
 
 void CBall_P::Collision(CCollider* m, CCollider* o)

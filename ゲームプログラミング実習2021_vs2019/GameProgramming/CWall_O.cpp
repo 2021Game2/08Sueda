@@ -40,10 +40,6 @@ CWall_O::CWall_O(const CVector& position, const CVector& rotation, const CVector
 	if (mScale.mY == 0.0f)mScale.mY = 1.0f;
 	if (mScale.mZ == 0.0f)mScale.mZ = 1.0f;
 	CTransform::Update();
-	//—Dæ“x‚ð1‚É•ÏX‚·‚é
-	mPriority = 1;
-	CTaskManager::Get()->Remove(this); //íœ‚µ‚Ä
-	CTaskManager::Get()->Add(this); //’Ç‰Á‚·‚é
 }
 
 void CWall_O::Collision(CCollider* m, CCollider* o)

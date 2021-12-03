@@ -1,12 +1,12 @@
 #ifndef CCAMERA_H
 #define CCAMERA_H
 #include "CVector.h"
-#include "CXCharacter.h"
+#include "CCharacter.h"
 #include "CCollider.h"
 /*
 カメラクラス
 */
-class CCamera : public CXCharacter {
+class CCamera : public CCharacter {
 public:
 	//視点
 	CVector mEye;
@@ -27,6 +27,8 @@ public:
 	void Render();
 	//デフォルトコンストラクタ
 	CCamera();
+
+	void Update();
 };
 
 //カメラの外部参照
