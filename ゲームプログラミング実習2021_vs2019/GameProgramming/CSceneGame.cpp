@@ -17,6 +17,7 @@
 #include "CSound.h"
 //
 #include "CWall.h"
+#include "CWall2.h"
 #include "CWall_R.h"
 #include "CWall_O.h"
 #include "CWall_Y.h"
@@ -135,7 +136,7 @@ void CSceneGame::Init() {
 	new CWall_B(CVector(-50.0f, 0.0f, -30.0f), CVector(), CVector(0.0f, 10.0f, 9.0f));  //特殊な壁(青)
 	new CWall_P(CVector(-85.0f, 0.0f, 10.0f), CVector(), CVector(4.0f, 10.0f, 0.0f));   //特殊な壁(紫)
 	//内壁(右上)の配置
-	new CWall(CVector(-55.0f, 0.0f, 20.0f), CVector(), CVector(45.0f, 10.0f, 0.0f));
+	new CWall(CVector(-50.0f, 0.0f, 20.0f), CVector(), CVector(41.0f, 10.0f, 0.0f));
 	new CWall(CVector(-10.0f, 0.0f, 55.0f), CVector(), CVector(0.0f, 10.0f, 36.0f));
 	new CWall(CVector(-20.0f, 0.0f, 65.0f), CVector(), CVector(0.0f, 10.0f, 35.0f));
 	new CWall(CVector(-30.0f, 0.0f, 55.0f), CVector(), CVector(0.0f, 10.0f, 35.0f));
@@ -145,6 +146,7 @@ void CSceneGame::Init() {
 	new CWall(CVector(-70.0f, 0.0f, 55.0f), CVector(), CVector(0.0f, 10.0f, 35.0f));
 	new CWall(CVector(-80.0f, 0.0f, 65.0f), CVector(), CVector(0.0f, 10.0f, 35.0f));
 	new CWall(CVector(-90.0f, 0.0f, 55.0f), CVector(), CVector(0.0f, 10.0f, 35.0f));    //特殊な壁(黄)の近辺の壁
+	new CWall2(CVector(-95.0f, 0.0f, 20.0f), CVector(), CVector(5.0f, 10.0f, 0.0f));    //特殊な壁(黄)の近辺の壁
 	new CWall_Y(CVector(-90.0f, 0.0f, 95.0f), CVector(), CVector(0.0f, 10.0f, 5.0f));   //特殊な壁(黄)
 	//障害物の配置
 	new CBlock(CVector(60.0f, 0.0f, -70.0f), CVector(), CVector(30.0f, 1.0f, 15.0f));   //左下の1段目
@@ -155,31 +157,50 @@ void CSceneGame::Init() {
 	new CBlock(CVector(-30.0f, 0.0f, -10.0f), CVector(), CVector(15.0f, 2.0f, 10.0f));  //右中心のボール(青)の2段目
 	new CBlock(CVector(-30.0f, 0.0f, -25.0f), CVector(), CVector(10.0f, 1.0f, 5.0f));   //右中心のボール(青)の1段目
 	//四角形のスイッチの配置
-	new CCube_R(CVector(-95.0f, 0.0f, -75.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //赤
-	new CCube_O(CVector(15.0f, 0.0f, -25.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //橙
-	new CCube_Y(CVector(90.0f, 0.0f, 15.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //黄
-	new CCube_G(CVector(-95.0f, 0.0f, -90.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //緑
-	new CCube_B(CVector(-75.0f, 0.0f, 95.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //青
-	new CCube_I(CVector(-65.0f, 0.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //藍
-	new CCube_P(CVector(95.0f, 0.0f, -95.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //紫
+//	new CCube_R(CVector(-95.0f, 0.0f, -75.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //赤
+	new CCube_R(CVector(5.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤(仮)
+//	new CCube_O(CVector(15.0f, 0.0f, -25.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //橙
+	new CCube_O(CVector(5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //橙(仮)
+//	new CCube_Y(CVector(90.0f, 0.0f, 15.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //黄
+	new CCube_Y(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //黄(仮)
+//	new CCube_G(CVector(-95.0f, 0.0f, -90.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //緑
+	new CCube_G(CVector(0.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //緑(仮)
+//	new CCube_B(CVector(-75.0f, 0.0f, 95.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //青
+	new CCube_B(CVector(0.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //青(仮)
+//	new CCube_I(CVector(-65.0f, 0.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //藍
+	new CCube_I(CVector(-5.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //藍(仮)
+//	new CCube_P(CVector(95.0f, 0.0f, -95.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //紫
+	new CCube_P(CVector(-5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //紫(仮)
 	//ボールの配置
-//	new CBall_R(CVector(60.0f, 6.0f, -70.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤
-	new CBall_R(CVector(5.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤(仮)
-//	new CBall_O(CVector(-15.0f, 1.0f, -90.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //橙
-	new CBall_O(CVector(5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //橙(仮)
-//	new CBall_Y(CVector(-95.0f, 1.0f, 25.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //黄
-	new CBall_Y(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //黄(仮)
-//	new CBall_G(CVector(55.0f, 4.0f, 80.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //緑
-	new CBall_G(CVector(0.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //緑(仮)
-//	new CBall_B(CVector(-30.0f, 6.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //青
-	new CBall_B(CVector(0.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //青(仮)
-//	new CBall_I(CVector(40.0f, 6.0f, 15.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //藍
-	new CBall_I(CVector(-5.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //藍(仮)
-//	new CBall_P(CVector(-85.0f, 1.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //紫
-	new CBall_P(CVector(-5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //紫(仮)
+	new CBall_R(CVector(60.0f, 6.0f, -70.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤
+//	new CBall_R(CVector(5.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤(仮)
+	new CBall_O(CVector(-15.0f, 1.0f, -90.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //橙
+//	new CBall_O(CVector(5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //橙(仮)
+	new CBall_Y(CVector(-95.0f, 1.0f, 25.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //黄
+//	new CBall_Y(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //黄(仮)
+	new CBall_G(CVector(55.0f, 4.0f, 80.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //緑
+//	new CBall_G(CVector(0.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //緑(仮)
+	new CBall_B(CVector(-30.0f, 6.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //青
+//	new CBall_B(CVector(0.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //青(仮)
+	new CBall_I(CVector(40.0f, 6.0f, 15.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //藍
+//	new CBall_I(CVector(-5.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //藍(仮)
+	new CBall_P(CVector(-85.0f, 1.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //紫
+//	new CBall_P(CVector(-5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //紫(仮)
 
 	//シーンの設定
 	mScene = EGAME;
+
+	//カメラのパラメータを作成する
+	CVector e, c, u;  //視点、注視点、上方向
+	//視点を求める
+	e = CVector(0.0f, 5.0f, -10.0f) * mPlayer.mMatrix;
+	//注視点を求める
+	c = mPlayer.mPosition;
+	//上方向を求める
+	u = CVector(0.0f, 1.0f, 0.0f) * mPlayer.mMatrixRotate;
+
+	//カメラクラスの設定
+	Camera.Set(e, c, u);
 }
 
 
@@ -201,11 +222,11 @@ void CSceneGame::Update() {
 	u = CVector(0.0f, 1.0f, 0.0f) * mPlayer.mMatrixRotate;
 
 	//カメラクラスの設定
-	Camera.Set(e, c, u);
+//	Camera.Set(e, c, u);
+	Camera.Set(e, c);
 	//衝突処理
 	CCollisionManager::Get()->Collision();
-
-	Camera.Render();
+//	Camera.Render();
 
 	//X軸＋回転
 //	if (CKey::Push('K')) {
@@ -253,6 +274,7 @@ void CSceneGame::Render() {
 	char buf[64];
 	//描画色の設定(白)
 	glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+
 	//時間の表示
 	sprintf(buf, "TIME %d", Time / 60);
 	if (Time > -1) {
@@ -271,6 +293,7 @@ void CSceneGame::Render() {
 			mScene = ETITLE;
 		}
 	}
+
 	//紫→クリア!
 	else if (CBall_I::spInstance->mHp <= 0) {
 		//描画色の設定(紫)

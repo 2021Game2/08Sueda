@@ -20,6 +20,8 @@ public:
 	//Set(視点, 注視点, 上方向)
 	void Set(const CVector &eye, const CVector &center,
 		const CVector &up);
+	//Set(視点、注視点)
+	void Set(const CVector& eye, const CVector& center);
 	//衝突処理
 	//Collision(コライダ1, コライダ2)
 	void Collision(CCollider* m, CCollider* o);
@@ -27,7 +29,7 @@ public:
 	void Render();
 	//デフォルトコンストラクタ
 	CCamera();
-
+	//更新処理
 	void Update();
 };
 

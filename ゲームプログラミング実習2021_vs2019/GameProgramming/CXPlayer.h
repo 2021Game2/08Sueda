@@ -13,6 +13,7 @@ public:
 	CCollider mColSphereSword;	//剣
 	CCollider mColSphereLegs_L; //左足
 	CCollider mColSphereLegs_R; //右足
+	CCollider mCollider;        //本体用コライダ
 	
 	CXPlayer();
 
@@ -22,6 +23,8 @@ public:
 	void Init(CModelX* model);
 
 	void Update();
+	//衝突処理
+	void TaskCollision();
 
 	//衝突処理
 	//Collision(コライダ1, コライダ2)

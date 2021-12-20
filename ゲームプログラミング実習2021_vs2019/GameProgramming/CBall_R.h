@@ -2,6 +2,7 @@
 #define CBALL_R_H
 #include "CCharacter.h"
 #include "CCollider.h"
+#include "CBullet.h"
 
 class CBall_R :public CCharacter {
 public:
@@ -20,6 +21,10 @@ public:
 	void Update();
 	//ƒqƒbƒgƒ|ƒCƒ“ƒg
 	int mHp;
+
+	int mFireCount;
+
+	int CountFrame = 0;    //“G‚Ì“®‚«‚Ì”½“]
 };
 
 #endif

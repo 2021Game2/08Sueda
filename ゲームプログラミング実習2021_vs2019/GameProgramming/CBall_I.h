@@ -2,6 +2,7 @@
 #define CBALL_I_H
 #include "CCharacter.h"
 #include "CCollider.h"
+#include "CBullet.h"
 
 class CBall_I :public CCharacter {
 public:
@@ -16,6 +17,10 @@ public:
 	CBall_I(const CVector& position, const CVector& rotation, const CVector& scale);
 	//衝突処理
 	void Collision(CCollider* m, CCollider* o);
+	//更新処理のオーバーライド
+	void Update();
+
+	int mFireCount;
 
 	int mHp;	//ヒットポイント
 };

@@ -134,6 +134,7 @@
     <ClCompile Include="CUtil.cpp" />
     <ClCompile Include="CVector.cpp" />
     <ClCompile Include="CWall.cpp" />
+    <ClCompile Include="CWall2.cpp" />
     <ClCompile Include="CWall_B.cpp" />
     <ClCompile Include="CWall_G.cpp" />
     <ClCompile Include="CWall_I.cpp" />
@@ -199,6 +200,7 @@
     <ClInclude Include="CVector.h" />
     <ClInclude Include="CVertex.h" />
     <ClInclude Include="CWall.h" />
+    <ClInclude Include="CWall2.h" />
     <ClInclude Include="CWall_B.h" />
     <ClInclude Include="CWall_G.h" />
     <ClInclude Include="CWall_I.h" />

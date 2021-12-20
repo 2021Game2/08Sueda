@@ -3,6 +3,8 @@
 #include "CTaskManager.h"
 #include "CBall_O.h"
 #include "CSound.h"
+#include "CBullet.h"
+#include "CWall2.h"
 #define OBJ "sphere.obj"  //モデルのファイル
 #define MTL "sphere.mtl"  //モデルのマテリアルファイル
 #define HP 1	//耐久値
@@ -48,6 +50,23 @@ CBall_Y::CBall_Y(const CVector& position, const CVector& rotation, const CVector
 	CTransform::Update();
 }
 
+void CBall_Y::Update() {
+	//60フレームに1回発射
+	if (mFireCount > 0) {
+		mFireCount--;
+	}
+	else {
+		//弾を北へ発射します
+		CBullet* bullet = new CBullet();
+		bullet->Set(0.1f, 1.5f);
+		bullet->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
+		bullet->mRotation = mRotation;
+		bullet->mEnabled = true;
+		bullet->Update();
+		mFireCount = 60;
+	}
+}
+
 void CBall_Y::Collision(CCollider* m, CCollider* o)
 {
 	if (m->mType == CCollider::ESPHERE)
@@ -65,6 +84,7 @@ void CBall_Y::Collision(CCollider* m, CCollider* o)
 							Se.Play();
 							mHp--;
 							mEnabled = false;
+							CWall2::spInstance->mEnabled = false;
 						}
 					}
 				}

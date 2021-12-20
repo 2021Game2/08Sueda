@@ -3,6 +3,7 @@
 #include "CTaskManager.h"
 #include "CBullet.h"
 #include "CSound.h"
+#include "CTask.h"
 #define OBJ "sphere.obj"  //モデルのファイル
 #define MTL "sphere.mtl"  //モデルのマテリアルファイル
 #define HP 1	//耐久値
@@ -16,6 +17,7 @@ extern CSound Se;
 CBall_R::CBall_R()
 	:mCollider(this, &mMatrix, CVector(), 1.0f)
 	, mHp(HP)
+	, mFireCount(60)
 {
 	//モデルがないときは読み込む
 	if (mModel.mTriangles.size() == 0)
@@ -46,20 +48,31 @@ CBall_R::CBall_R(const CVector& position, const CVector& rotation, const CVector
 }
 
 void CBall_R::Update() {
-	//弾を北へ発射します
-//	CBullet* bullet1 = new CBullet();
-//	bullet1->Set(0.1f, 1.5f);
-//	bullet1->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
-//	bullet1->mRotation = mRotation;
-//	bullet1->mFireCount = 60;
-//	bullet1->Update();
-	//弾を南へ発射します
-//	CBullet* bullet2 = new CBullet();
-//	bullet2->Set(0.1f, 1.5f);
-//	bullet2->mPosition = CVector(0.0f, 0.0f, -10.0f) * mMatrix;
-//	bullet2->mRotation = mRotation;
-//	bullet2->mFireCount = 60;
-//	bullet2->Update();
+	//60フレームに1回発射
+	if (mFireCount > 0) {
+		mFireCount--;
+	}
+	else {
+		//弾を北へ発射します
+		CBullet* bullet = new CBullet();
+		bullet->Set(0.1f, 1.5f);
+		bullet->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
+		bullet->mRotation = mRotation;
+		bullet->mEnabled = true;
+		bullet->Update();
+		mFireCount = 60;
+	}
+	CountFrame++;
+	if (CountFrame > 120) {
+		CountFrame = 0;
+	}
+	if (CountFrame <= 60) {
+		mPosition.mX -= 0.1f;
+	}
+	else {
+		mPosition.mX += 0.1f;
+	}
+	CTransform::Update();
 }
 
 void CBall_R::Collision(CCollider* m, CCollider* o)

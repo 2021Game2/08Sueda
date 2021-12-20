@@ -1,6 +1,7 @@
 #include "CXPlayer.h"
 #include "CKey.h"
 #include "CSound.h"
+#include "CCamera.h"
 #define G 0.1     //重力
 #define VJ0 1.5   //ジャンプ力
 
@@ -13,8 +14,9 @@ CXPlayer::CXPlayer()
 	, mColSphereSword(this, nullptr, CVector(-10.0f, 10.0f, 50.0f), 0.3f)
 	, mColSphereLegs_L(this, nullptr, CVector(-5.0f, -5.0f, 0.0f), 0.6f)
 	, mColSphereLegs_R(this, nullptr, CVector(5.0f, -5.0f, 0.0f), 0.6f)
-	,mVj(0)
-	,mJump(0)
+	, mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.5f)
+	, mVj(0)
+	, mJump(0)
 {
 	//タグにプレイヤーを設定します
 	mTag = EPLAYER;
@@ -119,9 +121,17 @@ void CXPlayer::Update()
 }
 
 //衝突処理
+void CXPlayer::TaskCollision()
+{
+	//コライダの優先度変更
+	mCollider.ChangePriority();
+}
+
+
+//衝突処理
 //Collision(コライダ1, コライダ2)
 void CXPlayer::Collision(CCollider* m, CCollider* o) {
-	switch(o->mType)
+	switch (o->mType)
 	{
 	case CCollider::ETRIANGLE: //三角コライダの時
 		CVector adjust;  //調整値

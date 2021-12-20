@@ -3,6 +3,7 @@
 #include "CTaskManager.h"
 #include "CBall_R.h"
 #include "CSound.h"
+#include "CBullet.h"
 #define OBJ "sphere.obj"  //モデルのファイル
 #define MTL "sphere.mtl"  //モデルのマテリアルファイル
 #define HP 1	//耐久値
@@ -16,6 +17,7 @@ extern CSound Se;
 CBall_O::CBall_O()
 	:mCollider(this, &mMatrix, CVector(), 1.0f)
 	, mHp(HP)
+	, mFireCount(60)
 {
 	//モデルがないときは読み込む
 	if (mModel.mTriangles.size() == 0)
@@ -42,6 +44,34 @@ CBall_O::CBall_O(const CVector& position, const CVector& rotation, const CVector
 	mPosition = position;   //位置の設定
 	mRotation = rotation;   //回転の設定
 	mScale = scale;         //拡縮の設定
+	CTransform::Update();
+}
+
+void CBall_O::Update() {
+	//60フレームに1回発射
+	if (mFireCount > 0) {
+		mFireCount--;
+	}
+	else {
+		//弾を東へ発射します
+		CBullet* bullet = new CBullet();
+		bullet->Set(0.1f, 1.5f);
+		bullet->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
+		bullet->mRotation = mRotation;
+		bullet->mEnabled = true;
+		bullet->Update();
+		mFireCount = 60;
+	}
+	CountFrame++;
+	if (CountFrame > 120) {
+		CountFrame = 0;
+	}
+	if (CountFrame <= 60) {
+		mPosition.mZ -= 0.1f;
+	}
+	else {
+		mPosition.mZ += 0.1f;
+	}
 	CTransform::Update();
 }
 
