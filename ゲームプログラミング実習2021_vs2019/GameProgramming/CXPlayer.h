@@ -7,6 +7,7 @@
 class CXPlayer : public CXCharacter
 {
 public:
+	static CXPlayer* spInstance;
 	//コライダの宣言
 	CCollider mColSphereBody;	//体
 	CCollider mColSphereHead;	//頭
@@ -33,6 +34,8 @@ public:
 	int mJump;
 	//ジャンプ用速度
 	float mVj;
+	//ヒットポイント
+	int mHp;
 };
 
 #endif

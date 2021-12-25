@@ -4,9 +4,11 @@
 #include "CCamera.h"
 #define G 0.1     //重力
 #define VJ0 1.5   //ジャンプ力
+#define HP 10	  //耐久値
 
 //外部変数の参照の作成
 extern CSound Se3;
+CXPlayer* CXPlayer::spInstance = 0;
 
 CXPlayer::CXPlayer()
 	: mColSphereBody(this, nullptr, CVector(), 0.5f)
@@ -17,12 +19,16 @@ CXPlayer::CXPlayer()
 	, mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.5f)
 	, mVj(0)
 	, mJump(0)
+	, mHp(HP)
 {
 	//タグにプレイヤーを設定します
 	mTag = EPLAYER;
+	mColSphereBody.mTag = CCollider::EBODY;
 	mColSphereSword.mTag = CCollider::ESWORD;
 	mColSphereLegs_L.mTag = CCollider::ELEGS_L;
 	mColSphereLegs_R.mTag = CCollider::ELEGS_R;
+
+	spInstance = this;
 }
 
 void CXPlayer::Init(CModelX* model)
@@ -143,6 +149,16 @@ void CXPlayer::Collision(CCollider* m, CCollider* o) {
 			mVj = 0;   //ジャンプ速度0
 			//ジャンプ可能
 			mJump = 0;
+		}
+		break;
+	}
+	//相手のコライダタイプの判定
+	switch (o->mTag)
+	{
+	case CCollider::EBULLET: //ボールの弾に当たった場合
+		//コライダのmとyが衝突しているか判定
+		if (CCollider::Collision(m, o)) {
+			mHp--;
 		}
 		break;
 	}

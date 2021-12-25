@@ -14,9 +14,10 @@ public:
 	{
 		EBODY,		//本体
 		ESEARCH,	//サーチ用
-		ESWORD,	//剣
+		ESWORD,	    //剣
 		ELEGS_L,    //左足
 		ELEGS_R,    //右足
+		EBULLET,    //ボールの弾
 	};
 	ETag mTag;
 	//コライダタイプ

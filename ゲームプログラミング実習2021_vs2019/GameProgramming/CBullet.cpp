@@ -4,9 +4,11 @@
 
 CBullet::CBullet()
 : mLife(50)
-, mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 1.0f)
+, mColBullet(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 1.0f)
 , mFireCount(FIRECOUNT)
-{}
+{
+	mColBullet.mTag = CCollider::EBULLET;
+}
 
 //•‚Æ‰œs‚«‚ÌÝ’è
 //Set(•, ‰œs)
@@ -64,7 +66,7 @@ void CBullet::Collision(CCollider *m, CCollider *o) {
 
 void CBullet::TaskCollision()
 {
-	mCollider.ChangePriority();
-	CCollisionManager::Get()->Collision(&mCollider, COLLISIONRANGE);
+	mColBullet.ChangePriority();
+	CCollisionManager::Get()->Collision(&mColBullet, COLLISIONRANGE);
 }
 

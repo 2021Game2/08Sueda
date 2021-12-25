@@ -158,34 +158,34 @@ void CSceneGame::Init() {
 	new CBlock(CVector(-30.0f, 0.0f, -25.0f), CVector(), CVector(10.0f, 1.0f, 5.0f));   //右中心のボール(青)の1段目
 	//四角形のスイッチの配置
 //	new CCube_R(CVector(-95.0f, 0.0f, -75.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //赤
-	new CCube_R(CVector(5.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤(仮)
+	new CCube_R(CVector(5.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));       //赤(仮)
 //	new CCube_O(CVector(15.0f, 0.0f, -25.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //橙
-	new CCube_O(CVector(5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //橙(仮)
+	new CCube_O(CVector(5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));      //橙(仮)
 //	new CCube_Y(CVector(90.0f, 0.0f, 15.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //黄
-	new CCube_Y(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //黄(仮)
+	new CCube_Y(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //黄(仮)
 //	new CCube_G(CVector(-95.0f, 0.0f, -90.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //緑
-	new CCube_G(CVector(0.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //緑(仮)
+	new CCube_G(CVector(0.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));       //緑(仮)
 //	new CCube_B(CVector(-75.0f, 0.0f, 95.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //青
-	new CCube_B(CVector(0.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //青(仮)
+	new CCube_B(CVector(0.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));      //青(仮)
 //	new CCube_I(CVector(-65.0f, 0.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //藍
-	new CCube_I(CVector(-5.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //藍(仮)
+	new CCube_I(CVector(-5.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));      //藍(仮)
 //	new CCube_P(CVector(95.0f, 0.0f, -95.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //紫
-	new CCube_P(CVector(-5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //紫(仮)
+	new CCube_P(CVector(-5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //紫(仮)
 	//ボールの配置
-	new CBall_R(CVector(60.0f, 6.0f, -70.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤
-//	new CBall_R(CVector(5.0f, 1.0f, 0.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //赤(仮)
-	new CBall_O(CVector(-15.0f, 1.0f, -90.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //橙
-//	new CBall_O(CVector(5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //橙(仮)
-	new CBall_Y(CVector(-95.0f, 1.0f, 25.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //黄
-//	new CBall_Y(CVector(5.0f, 1.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));    //黄(仮)
-	new CBall_G(CVector(55.0f, 4.0f, 80.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //緑
-//	new CBall_G(CVector(0.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //緑(仮)
-	new CBall_B(CVector(-30.0f, 6.0f, -10.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //青
-//	new CBall_B(CVector(0.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //青(仮)
-	new CBall_I(CVector(40.0f, 6.0f, 15.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //藍
-//	new CBall_I(CVector(-5.0f, 1.0f, 5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));     //藍(仮)
-	new CBall_P(CVector(-85.0f, 1.0f, -65.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //紫
-//	new CBall_P(CVector(-5.0f, 1.0f, -5.0f), CVector(), CVector(1.0f, 1.0f, 1.0f));   //紫(仮)
+	new CBall_R(CVector(60.0f, 6.0f, -70.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f));    //赤
+//	new CBall_R(CVector(5.0f, 1.0f, 0.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f));    //赤(仮)
+	new CBall_O(CVector(-15.0f, 1.0f, -90.0f), CVector(0.0f, -90.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f));   //橙
+//	new CBall_O(CVector(5.0f, 1.0f, -5.0f), CVector(0.0f, -90.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f));   //橙(仮)
+	new CBall_Y(CVector(-95.0f, 1.0f, 25.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f));    //黄
+//	new CBall_Y(CVector(5.0f, 1.0f, -10.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f));    //黄(仮)
+	new CBall_G(CVector(55.0f, 4.0f, 80.0f), CVector(0.0f, 90.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f));     //緑
+//	new CBall_G(CVector(0.0f, 1.0f, 5.0f), CVector(0.0f, 90.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f));     //緑(仮)
+	new CBall_B(CVector(-30.0f, 6.0f, -10.0f), CVector(0.0f, 180.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f));   //青
+//	new CBall_B(CVector(0.0f, 1.0f, -5.0f), CVector(0.0f, 180.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f));   //青(仮)
+	new CBall_I(CVector(40.0f, 6.0f, 15.0f), CVector(0.0f, 90.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f));     //藍
+//	new CBall_I(CVector(-5.0f, 1.0f, 5.0f), CVector(0.0f, 90.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f));     //藍(仮)
+	new CBall_P(CVector(-85.0f, 1.0f, -65.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f));   //紫
+//	new CBall_P(CVector(-5.0f, 1.0f, -5.0f), CVector(0.0f, 0.0f, 0.0f), CVector(1.0f, 1.0f, 1.0f));   //紫(仮)
 
 	//シーンの設定
 	mScene = EGAME;
@@ -281,6 +281,23 @@ void CSceneGame::Render() {
 		Time++;
 	}
 	mText.DrawString(buf, 550, 20, 16, 16);
+
+	//プレイヤーの残りHPの表示
+	sprintf(buf, "HP %d", CXPlayer::spInstance->mHp);
+	mText.DrawString(buf, 350, 500, 16, 16);
+
+	//プレイヤーのHPが0になったらゲームオーバー
+	if (CXPlayer::spInstance->mHp == 0) {
+		//描画色の設定(白)
+		glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+		mText.DrawString("GAME OVER!!", 100, 300, 30, 30);
+		mText.DrawString("PUSH ENTER KEY", 180, 200, 16, 16);
+		Time = 0;
+		Time--;
+		if (CKey::Once(VK_RETURN)) {
+			mScene = ETITLE;
+		}
+	}
 
 	//全てのボールを破壊するとゲームクリア
 	if (CBall_P::spInstance->mHp <= 0) {

@@ -53,7 +53,7 @@ void CBall_I::Update() {
 		mFireCount--;
 	}
 	else {
-		//’e‚ð¼‚Ö”­ŽË‚µ‚Ü‚·
+		//’e‚ð”­ŽË‚µ‚Ü‚·
 		CBullet* bullet = new CBullet();
 		bullet->Set(0.1f, 1.5f);
 		bullet->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
