@@ -62,16 +62,6 @@ void CBall_O::Update() {
 		bullet->Update();
 		mFireCount = 60;
 	}
-	CountFrame++;
-	if (CountFrame > 120) {
-		CountFrame = 0;
-	}
-	if (CountFrame <= 60) {
-		mPosition.mZ -= 0.1f;
-	}
-	else {
-		mPosition.mZ += 0.1f;
-	}
 	CTransform::Update();
 }
 

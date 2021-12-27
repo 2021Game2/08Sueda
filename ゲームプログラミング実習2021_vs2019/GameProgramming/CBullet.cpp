@@ -4,7 +4,7 @@
 
 CBullet::CBullet()
 : mLife(50)
-, mColBullet(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 1.0f)
+, mColBullet(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 1.5f)
 , mFireCount(FIRECOUNT)
 {
 	mColBullet.mTag = CCollider::EBULLET;
@@ -57,6 +57,17 @@ void CBullet::Collision(CCollider *m, CCollider *o) {
 		CVector adjust;  //調整値
 		//三角コライダと球コライダの衝突判定
 		if (CCollider::CollisionTriangleSphere(o, m, &adjust))
+		{
+			mEnabled = false;
+		}
+		break;
+	}
+
+	switch (o->mTag)
+	{
+	case CCollider::EBODY:
+		//コライダのmとyが衝突しているか判定
+		if (CCollider::Collision(m, o))
 		{
 			mEnabled = false;
 		}
