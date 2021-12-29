@@ -152,14 +152,4 @@ void CXPlayer::Collision(CCollider* m, CCollider* o) {
 		}
 		break;
 	}
-	//相手のコライダタイプの判定
-	switch (o->mTag)
-	{
-	case CCollider::EBULLET: //ボールの弾に当たった場合
-		//コライダのmとyが衝突しているか判定
-		if (CCollider::Collision(m, o)) {
-			mHp--;
-		}
-		break;
-	}
 }

@@ -36,9 +36,9 @@ CWall_B::CWall_B(const CVector& position, const CVector& rotation, const CVector
 	mPosition = position;   //à íuÇÃê›íË
 	mRotation = rotation;   //âÒì]ÇÃê›íË
 	mScale = scale;         //ägèkÇÃê›íË
-	if (mScale.mX == 0.0f)mScale.mX = 1.0f;
-	if (mScale.mY == 0.0f)mScale.mY = 1.0f;
-	if (mScale.mZ == 0.0f)mScale.mZ = 1.0f;
+	if (mScale.mX == 0.0f)mScale.mX = 0.3f;
+	if (mScale.mY == 0.0f)mScale.mY = 0.3f;
+	if (mScale.mZ == 0.0f)mScale.mZ = 0.3f;
 	CTransform::Update();
 }
 

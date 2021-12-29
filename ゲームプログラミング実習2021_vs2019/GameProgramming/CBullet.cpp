@@ -1,13 +1,14 @@
 #include "CBullet.h"
 #include "CCollisionManager.h"
+#include "CXPlayer.h"
 #define FIRECOUNT 60
 
 CBullet::CBullet()
 : mLife(50)
-, mColBullet(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 1.5f)
+, mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.5f)
 , mFireCount(FIRECOUNT)
 {
-	mColBullet.mTag = CCollider::EBULLET;
+	
 }
 
 //幅と奥行きの設定
@@ -69,6 +70,7 @@ void CBullet::Collision(CCollider *m, CCollider *o) {
 		//コライダのmとyが衝突しているか判定
 		if (CCollider::Collision(m, o))
 		{
+			CXPlayer::spInstance->mHp--;
 			mEnabled = false;
 		}
 		break;
@@ -77,7 +79,7 @@ void CBullet::Collision(CCollider *m, CCollider *o) {
 
 void CBullet::TaskCollision()
 {
-	mColBullet.ChangePriority();
-	CCollisionManager::Get()->Collision(&mColBullet, COLLISIONRANGE);
+	mCollider.ChangePriority();
+	CCollisionManager::Get()->Collision(&mCollider, COLLISIONRANGE);
 }
 

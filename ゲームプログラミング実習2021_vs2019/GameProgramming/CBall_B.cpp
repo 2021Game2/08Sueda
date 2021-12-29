@@ -62,17 +62,6 @@ void CBall_B::Update() {
 		bullet->Update();
 		mFireCount = 60;
 	}
-	CountFrame++;
-	if (CountFrame > 120) {
-		CountFrame = 0;
-	}
-	if (CountFrame <= 60) {
-		mPosition.mX -= 0.1f;
-	}
-	else {
-		mPosition.mX += 0.1f;
-	}
-	CTransform::Update();
 }
 
 void CBall_B::Collision(CCollider* m, CCollider* o)

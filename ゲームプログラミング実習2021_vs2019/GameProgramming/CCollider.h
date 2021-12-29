@@ -17,7 +17,6 @@ public:
 		ESWORD,	    //剣
 		ELEGS_L,    //左足
 		ELEGS_R,    //右足
-		EBULLET,    //ボールの弾
 	};
 	ETag mTag;
 	//コライダタイプ

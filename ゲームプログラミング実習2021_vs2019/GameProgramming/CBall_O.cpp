@@ -62,7 +62,6 @@ void CBall_O::Update() {
 		bullet->Update();
 		mFireCount = 60;
 	}
-	CTransform::Update();
 }
 
 void CBall_O::Collision(CCollider* m, CCollider* o)

@@ -12,8 +12,7 @@
 */
 class CBullet : public CCharacter {
 public:
-//	CCollider mCollider;
-	CCollider mColBullet;	//’e
+	CCollider mCollider;    //’e	
 	//¶‘¶ŠÔ
 	int mLife;
 	//”­ËŠÔŠu
