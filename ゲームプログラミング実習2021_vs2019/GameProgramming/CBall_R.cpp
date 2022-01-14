@@ -54,12 +54,21 @@ void CBall_R::Update() {
 	}
 	else {
 		//’e‚ð”­ŽË‚µ‚Ü‚·
-		CBullet* bullet = new CBullet();
-		bullet->Set(0.1f, 1.5f);
-		bullet->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
-		bullet->mRotation = mRotation;
-		bullet->mEnabled = true;
-		bullet->Update();
+		CBullet* bullet1 = new CBullet();
+		bullet1->Set(1.1f, 1.5f);
+		bullet1->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
+		bullet1->mRotation = mRotation;
+		bullet1->mEnabled = true;
+		bullet1->Update();
+		mFireCount = 60;
+
+		//’e‚ð”­ŽË‚µ‚Ü‚·
+		CBullet* bullet2 = new CBullet();
+		bullet2->Set(1.1f, 1.5f);
+		bullet2->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
+		bullet2->mRotation = CVector(-90.0f, 0.0f, 0.0f);
+		bullet2->mEnabled = true;
+		bullet2->Update();
 		mFireCount = 60;
 	}
 }
