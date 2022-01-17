@@ -2,6 +2,7 @@
 #include "CKey.h"
 #include "CSound.h"
 #include "CCamera.h"
+#include "CCollisionManager.h"
 #define G 0.1     //重力
 #define VJ0 1.5   //ジャンプ力
 #define HP 10	  //耐久値
@@ -135,6 +136,8 @@ void CXPlayer::TaskCollision()
 {
 	//コライダの優先度変更
 	mCollider.ChangePriority();
+	//衝突処理を実行
+	CCollisionManager::Get()->Collision(&mCollider, COLLISIONRANGE);
 }
 
 

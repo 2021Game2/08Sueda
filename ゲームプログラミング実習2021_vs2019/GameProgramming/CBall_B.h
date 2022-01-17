@@ -16,9 +16,12 @@ public:
 	//CBall_B(位置、回転、拡縮)
 	CBall_B(const CVector& position, const CVector& rotation, const CVector& scale);
 	//衝突処理
+	//Collision(コライダ1, コライダ2)
 	void Collision(CCollider* m, CCollider* o);
 	//更新処理
 	void Update();
+	//衝突処理
+	void TaskCollision();
 
 	int CountFrame = 0;    //敵の動きの反転
 	int mHp;	//ヒットポイント

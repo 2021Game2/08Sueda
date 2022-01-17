@@ -57,7 +57,7 @@ CSceneGame::CSceneGame()
 }
 
 CSceneGame::~CSceneGame() {
-	
+	CTaskManager::Get()->Delete();
 }
 
 void CSceneGame::Init() {
@@ -225,7 +225,8 @@ void CSceneGame::Update() {
 //	Camera.Set(e, c, u);
 	Camera.Set(e, c);
 	//Õ“Ëˆ—
-	CCollisionManager::Get()->Collision();
+//	CCollisionManager::Get()->Collision();
+	CTaskManager::Get()->TaskCollision();
 //	Camera.Render();
 
 	//X²{‰ñ“]

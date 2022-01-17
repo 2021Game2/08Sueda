@@ -4,6 +4,7 @@
 #include "CBall_R.h"
 #include "CSound.h"
 #include "CBullet.h"
+#include "CCollisionManager.h"
 #define OBJ "sphere.obj"  //モデルのファイル
 #define MTL "sphere.mtl"  //モデルのマテリアルファイル
 #define HP 1	//耐久値
@@ -89,6 +90,15 @@ void CBall_O::Update() {
 		bullet4->Update();
 		mFireCount = 60;
 	}
+}
+
+//衝突処理
+void CBall_O::TaskCollision()
+{
+	//コライダの優先度変更
+	mCollider.ChangePriority();
+	//衝突処理を実行
+	CCollisionManager::Get()->Collision(&mCollider, COLLISIONRANGE);
 }
 
 void CBall_O::Collision(CCollider* m, CCollider* o)

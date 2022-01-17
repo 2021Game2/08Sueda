@@ -3,6 +3,7 @@
 #include "CTaskManager.h"
 #include "CWall_O.h"
 #include "CSound.h"
+#include "CCollisionManager.h"
 #define OBJ "cube.obj"  //モデルのファイル
 #define MTL "cube.mtl"  //モデルのマテリアルファイル
 
@@ -37,6 +38,15 @@ CCube_O::CCube_O(const CVector& position, const CVector& rotation, const CVector
 	mRotation = rotation;   //回転の設定
 	mScale = scale;         //拡縮の設定
 	CTransform::Update();
+}
+
+//衝突処理
+void CCube_O::TaskCollision()
+{
+	//コライダの優先度変更
+	mCollider.ChangePriority();
+	//衝突処理を実行
+	CCollisionManager::Get()->Collision(&mCollider, COLLISIONRANGE);
 }
 
 void CCube_O::Collision(CCollider* m, CCollider* o)
