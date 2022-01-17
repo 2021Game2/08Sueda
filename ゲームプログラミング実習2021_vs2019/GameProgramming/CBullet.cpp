@@ -37,6 +37,11 @@ void CBullet::Update() {
 		//–³Œø‚É‚·‚é
 		mEnabled = false;
 	}
+
+	//ƒvƒŒƒCƒ„[‚ÌHP‚ª0‚É‚È‚Á‚½‚ç’e‚ðo‚³‚È‚­‚·‚é
+	if (CXPlayer::spInstance->mHp == 0) {
+		mEnabled = false;
+	}
 }
 
 //•`‰æ

@@ -123,6 +123,10 @@ void CXPlayer::Update()
 			ChangeAnimation(0, true, 60);
 		}
 	}
+
+	if (CXPlayer::mHp == 0) {
+		
+	}
 	CXCharacter::Update();
 }
 

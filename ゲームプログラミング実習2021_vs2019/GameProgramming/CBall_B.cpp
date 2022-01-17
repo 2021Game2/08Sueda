@@ -53,13 +53,40 @@ void CBall_B::Update() {
 		mFireCount--;
 	}
 	else {
-		//’e‚ð”­ŽË‚µ‚Ü‚·
-		CBullet* bullet = new CBullet();
-		bullet->Set(0.1f, 1.5f);
-		bullet->mPosition = CVector(0.0f, 0.0f, 10.0f) * mMatrix;
-		bullet->mRotation = mRotation;
-		bullet->mEnabled = true;
-		bullet->Update();
+		//’e‚ð”­ŽË‚µ‚Ü‚·(‘O)
+		CBullet* bullet1 = new CBullet();
+		bullet1->Set(1.1f, 1.5f);
+		bullet1->mPosition = CVector(0.0f, 0.0f, 2.0f) * mMatrix;
+		bullet1->mRotation = mRotation;
+		bullet1->mEnabled = true;
+		bullet1->Update();
+		mFireCount = 60;
+
+		//’e‚ð”­ŽË‚µ‚Ü‚·(Œã)
+		CBullet* bullet2 = new CBullet();
+		bullet2->Set(1.1f, 1.5f);
+		bullet2->mPosition = CVector(0.0f, 0.0f, -2.0f) * mMatrix;
+		bullet2->mRotation = CVector(-180.0f, 0.0f, 0.0f);
+		bullet2->mEnabled = true;
+		bullet2->Update();
+		mFireCount = 60;
+
+		//’e‚ð”­ŽË‚µ‚Ü‚·(‰E)
+		CBullet* bullet3 = new CBullet();
+		bullet3->Set(1.1f, 1.5f);
+		bullet3->mPosition = CVector(-2.0f, 0.0f, 0.0f) * mMatrix;
+		bullet3->mRotation = CVector(0.0f, -90.0f, 0.0f);
+		bullet3->mEnabled = true;
+		bullet3->Update();
+		mFireCount = 60;
+
+		//’e‚ð”­ŽË‚µ‚Ü‚·(¶)
+		CBullet* bullet4 = new CBullet();
+		bullet4->Set(1.1f, 1.5f);
+		bullet4->mPosition = CVector(2.0f, 0.0f, 0.0f) * mMatrix;
+		bullet4->mRotation = CVector(0.0f, 90.0f, 0.0f);
+		bullet4->mEnabled = true;
+		bullet4->Update();
 		mFireCount = 60;
 	}
 }
