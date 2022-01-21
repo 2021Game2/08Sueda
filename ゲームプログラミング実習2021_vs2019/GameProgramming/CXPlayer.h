@@ -7,7 +7,6 @@
 class CXPlayer : public CXCharacter
 {
 public:
-	static CXPlayer* spInstance;
 	//ƒRƒ‰ƒCƒ_‚ÌéŒ¾
 	CCollider mColSphereBody;	//‘Ì
 	CCollider mColSphereHead;	//“ª

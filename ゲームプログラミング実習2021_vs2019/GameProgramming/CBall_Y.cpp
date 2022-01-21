@@ -3,7 +3,6 @@
 #include "CTaskManager.h"
 #include "CBall_O.h"
 #include "CSound.h"
-#include "CBullet.h"
 #include "CWall2.h"
 #include "CCollisionManager.h"
 #define OBJ "sphere.obj"  //モデルのファイル
@@ -49,50 +48,6 @@ CBall_Y::CBall_Y(const CVector& position, const CVector& rotation, const CVector
 	if (mScale.mY == 0.0f)mScale.mY = 1.0f;
 	if (mScale.mZ == 0.0f)mScale.mZ = 1.0f;
 	CTransform::Update();
-}
-
-void CBall_Y::Update() {
-	//60フレームに1回発射
-	if (mFireCount > 0) {
-		mFireCount--;
-	}
-	else {
-		//弾を発射します(前)
-		CBullet* bullet1 = new CBullet();
-		bullet1->Set(1.1f, 1.5f);
-		bullet1->mPosition = CVector(0.0f, 0.0f, 2.0f) * mMatrix;
-		bullet1->mRotation = mRotation;
-		bullet1->mEnabled = true;
-		bullet1->Update();
-		mFireCount = 60;
-
-		//弾を発射します(後)
-		CBullet* bullet2 = new CBullet();
-		bullet2->Set(1.1f, 1.5f);
-		bullet2->mPosition = CVector(0.0f, 0.0f, -2.0f) * mMatrix;
-		bullet2->mRotation = CVector(-180.0f, 0.0f, 0.0f);
-		bullet2->mEnabled = true;
-		bullet2->Update();
-		mFireCount = 60;
-
-		//弾を発射します(右)
-		CBullet* bullet3 = new CBullet();
-		bullet3->Set(1.1f, 1.5f);
-		bullet3->mPosition = CVector(-2.0f, 0.0f, 0.0f) * mMatrix;
-		bullet3->mRotation = CVector(0.0f, -90.0f, 0.0f);
-		bullet3->mEnabled = true;
-		bullet3->Update();
-		mFireCount = 60;
-
-		//弾を発射します(左)
-		CBullet* bullet4 = new CBullet();
-		bullet4->Set(1.1f, 1.5f);
-		bullet4->mPosition = CVector(2.0f, 0.0f, 0.0f) * mMatrix;
-		bullet4->mRotation = CVector(0.0f, 90.0f, 0.0f);
-		bullet4->mEnabled = true;
-		bullet4->Update();
-		mFireCount = 60;
-	}
 }
 
 //衝突処理

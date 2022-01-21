@@ -5,11 +5,9 @@
 #include "CCollisionManager.h"
 #define G 0.1     //重力
 #define VJ0 1.5   //ジャンプ力
-#define HP 10	  //耐久値
 
 //外部変数の参照の作成
 extern CSound Se3;
-CXPlayer* CXPlayer::spInstance = 0;
 
 CXPlayer::CXPlayer()
 	: mColSphereBody(this, nullptr, CVector(), 0.5f)
@@ -20,7 +18,6 @@ CXPlayer::CXPlayer()
 	, mCollider(this, &mMatrix, CVector(0.0f, 0.0f, 0.0f), 0.5f)
 	, mVj(0)
 	, mJump(0)
-	, mHp(HP)
 {
 	//タグにプレイヤーを設定します
 	mTag = EPLAYER;
@@ -28,8 +25,6 @@ CXPlayer::CXPlayer()
 	mColSphereSword.mTag = CCollider::ESWORD;
 	mColSphereLegs_L.mTag = CCollider::ELEGS_L;
 	mColSphereLegs_R.mTag = CCollider::ELEGS_R;
-
-	spInstance = this;
 }
 
 void CXPlayer::Init(CModelX* model)
@@ -50,7 +45,7 @@ void CXPlayer::Init(CModelX* model)
 void CXPlayer::Update()
 {
 	//ジャンプ攻撃
-	if (mJump == 0 && CKey::Push('J'))
+	if (mJump == 0 && CKey::Once('J'))
 	{
 		mVj = VJ0;   //ジャンプ力を速度に設定
 		mJump++;     //フラグに1加算
@@ -109,7 +104,7 @@ void CXPlayer::Update()
 			mRotation.mY -= 2.0f;
 		}
 		//攻撃
-		if (CKey::Push(' '))
+		if (CKey::Once(' '))
 		{
 			ChangeAnimation(3, true, 30);
 		}
@@ -123,10 +118,6 @@ void CXPlayer::Update()
 		else {
 			ChangeAnimation(0, true, 60);
 		}
-	}
-
-	if (CXPlayer::mHp == 0) {
-		
 	}
 	CXCharacter::Update();
 }

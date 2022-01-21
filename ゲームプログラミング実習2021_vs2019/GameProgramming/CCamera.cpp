@@ -1,6 +1,7 @@
 #include "CCamera.h"
 #include "CCollider.h"
 #include "CTaskManager.h"
+#include "CCollisionManager.h"
 #include "glut.h"
 #define RADIUS 1.0f
 #define VELOCITY 0.2f
@@ -45,6 +46,12 @@ void CCamera::Update() {
 		mPosition = mPosition + dir.Normalize() * VELOCITY;
 	}
 	CTransform::Update();
+}
+
+void CCamera::TaskCollision()
+{
+	mCollider.ChangePriority();
+	CCollisionManager::Get()->Collision(&mCollider, COLLISIONRANGE);
 }
 
 //Õ“Ëˆ—

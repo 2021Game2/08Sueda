@@ -31,6 +31,8 @@ public:
 	CCamera();
 	//更新処理
 	void Update();
+
+	void TaskCollision();
 };
 
 //カメラの外部参照

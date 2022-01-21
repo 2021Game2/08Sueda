@@ -1,7 +1,6 @@
 #include "CBall_R.h"
 #include "CSceneGame.h"
 #include "CTaskManager.h"
-#include "CBullet.h"
 #include "CSound.h"
 #include "CTask.h"
 #include "CCollisionManager.h"
@@ -18,7 +17,6 @@ extern CSound Se;
 CBall_R::CBall_R()
 	:mCollider(this, &mMatrix, CVector(), 1.0f)
 	, mHp(HP)
-	, mFireCount(60)
 {
 	//ƒ‚ƒfƒ‹‚ª‚È‚¢‚Æ‚«‚Í“Ç‚İ‚Ş
 	if (mModel.mTriangles.size() == 0)
@@ -46,50 +44,6 @@ CBall_R::CBall_R(const CVector& position, const CVector& rotation, const CVector
 	mRotation = rotation;   //‰ñ“]‚Ìİ’è
 	mScale = scale;         //Šgk‚Ìİ’è
 	CTransform::Update();
-}
-
-void CBall_R::Update() {
-	//60ƒtƒŒ[ƒ€‚É1‰ñ”­Ë
-	if (mFireCount > 0) {
-		mFireCount--;
-	}
-	else {
-		//’e‚ğ”­Ë‚µ‚Ü‚·(‘O)
-		CBullet* bullet1 = new CBullet();
-		bullet1->Set(1.1f, 1.5f);
-		bullet1->mPosition = CVector(0.0f, 0.0f, 2.0f) * mMatrix;
-		bullet1->mRotation = mRotation;
-		bullet1->mEnabled = true;
-		bullet1->Update();
-		mFireCount = 60;
-
-		//’e‚ğ”­Ë‚µ‚Ü‚·(Œã)
-		CBullet* bullet2 = new CBullet();
-		bullet2->Set(1.1f, 1.5f);
-		bullet2->mPosition = CVector(0.0f, 0.0f, -2.0f) * mMatrix;
-		bullet2->mRotation = CVector(-180.0f, 0.0f, 0.0f);
-		bullet2->mEnabled = true;
-		bullet2->Update();
-		mFireCount = 60;
-
-		//’e‚ğ”­Ë‚µ‚Ü‚·(‰E)
-		CBullet* bullet3 = new CBullet();
-		bullet3->Set(1.1f, 1.5f);
-		bullet3->mPosition = CVector(-2.0f, 0.0f, 0.0f) * mMatrix;
-		bullet3->mRotation = CVector(0.0f, -90.0f, 0.0f);
-		bullet3->mEnabled = true;
-		bullet3->Update();
-		mFireCount = 60;
-
-		//’e‚ğ”­Ë‚µ‚Ü‚·(¶)
-		CBullet* bullet4 = new CBullet();
-		bullet4->Set(1.1f, 1.5f);
-		bullet4->mPosition = CVector(2.0f, 0.0f, 0.0f) * mMatrix;
-		bullet4->mRotation = CVector(0.0f, 90.0f, 0.0f);
-		bullet4->mEnabled = true;
-		bullet4->Update();
-		mFireCount = 60;
-	}
 }
 
 //Õ“Ëˆ—

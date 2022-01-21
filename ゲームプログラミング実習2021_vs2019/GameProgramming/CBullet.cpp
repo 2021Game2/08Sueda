@@ -37,11 +37,6 @@ void CBullet::Update() {
 		//無効にする
 		mEnabled = false;
 	}
-
-	//プレイヤーのHPが0になったら弾を出さなくする
-	if (CXPlayer::spInstance->mHp == 0) {
-		mEnabled = false;
-	}
 }
 
 //描画
@@ -75,7 +70,7 @@ void CBullet::Collision(CCollider *m, CCollider *o) {
 		//コライダのmとyが衝突しているか判定
 		if (CCollider::Collision(m, o))
 		{
-			CXPlayer::spInstance->mHp--;
+//			CXPlayer::spInstance->mHp--;
 			mEnabled = false;
 		}
 		break;
