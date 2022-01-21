@@ -26,7 +26,7 @@ public:
 	void Update(CMatrix& m);
 	void Update();
 	//•`‰æˆ—
-//	void Render();
+	void Render();
 };
 
 #endif

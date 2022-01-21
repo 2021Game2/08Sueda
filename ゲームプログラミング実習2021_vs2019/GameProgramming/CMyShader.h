@@ -1,4 +1,4 @@
-/*#ifndef CMYSHADER_H
+#ifndef CMYSHADER_H
 #define CMYSHADER_H
 
 #include "CShader.h"
@@ -21,4 +21,3 @@ public:
 };
 
 #endif
-*/
