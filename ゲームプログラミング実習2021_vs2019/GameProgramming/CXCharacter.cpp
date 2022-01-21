@@ -96,9 +96,9 @@ void CXCharacter::Update(CMatrix& matrix) {
 /*
  描画する
 */
-void CXCharacter::Render() {
-	mpModel->RenderShader(mpCombinedMatrix);
-}
+//void CXCharacter::Render() {
+//	mpModel->RenderShader(mpCombinedMatrix);
+//}
 //更新処理
 void CXCharacter::Update() {
 	//変換行列の更新

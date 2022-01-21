@@ -94,11 +94,11 @@ public:
 
 //CMeshクラスの定義
 class CMesh {
-	friend CMyShader;
+//	friend CMyShader;
 	//マテリアル毎の面数
-	std::vector<int> mMaterialVertexCount;
+//	std::vector<int> mMaterialVertexCount;
 	//頂点バッファ識別子
-	GLuint	  mMyVertexBufferId;
+//	GLuint	  mMyVertexBufferId;
 
 public:
 	int mVertexNum;	//頂点数
@@ -134,7 +134,7 @@ public:
 		, mpAnimateVertex(nullptr)
 		, mpAnimateNormal(nullptr)
 		, mpTextureCoords(nullptr)
-		, mMyVertexBufferId(0)
+//		, mMyVertexBufferId(0)
 	{}
 	//デストラクタ
 	~CMesh() {
@@ -159,7 +159,7 @@ public:
 
 	void AnimateVertex(CMatrix*);
 	//頂点バッファの作成
-	void CreateVertexBuffer();
+//	void CreateVertexBuffer();
 };
 
 //CModelXFrameクラスの定義
@@ -196,10 +196,10 @@ public:
 
 
 class CModelX {
-	CMyShader mShader; //シェーダーのインスタンス
+//	CMyShader mShader; //シェーダーのインスタンス
 public:
 	//シェーダー用スキンマトリックス
-	CMatrix* mpSkinningMatrix;
+//	CMatrix* mpSkinningMatrix;
 	char* mpPointer;
 	char mToken[1024];
 	std::vector<CModelXFrame*> mFrame;	//フレームの配列
@@ -209,7 +209,7 @@ public:
 
 	CModelX()
 		: mpPointer(nullptr)
-		, mpSkinningMatrix(nullptr)
+//		, mpSkinningMatrix(nullptr)
 	{}
 
 	~CModelX() {
@@ -224,7 +224,7 @@ public:
 		for (int i = 0; i < mMaterial.size(); i++) {
 			delete mMaterial[i];
 		}
-		SAFE_DELETE_ARRAY(mpSkinningMatrix);
+//		SAFE_DELETE_ARRAY(mpSkinningMatrix);
 	}
 
 	void Load(char* file);
@@ -266,9 +266,9 @@ public:
 	end:分割したいアニメーションの終了時間
 	name:追加するアニメーションセットの名前
 	*/
-	void CModelX::SeparateAnimationSet(int idx, int start, int end, char* name);
+//	void CModelX::SeparateAnimationSet(int idx, int start, int end, char* name);
 	//シェーダーを使った描画
-	void RenderShader(CMatrix* m);
+//	void RenderShader(CMatrix* m);
 };
 
 #endif

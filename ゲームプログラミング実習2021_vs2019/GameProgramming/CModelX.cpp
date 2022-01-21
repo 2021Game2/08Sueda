@@ -72,17 +72,18 @@ void CModelX::Load(char* file)
 	//スキンウェイトのフレーム番号設定
 	SetSkinWeightFrameIndex();
 	//頂点バッファの作成
-	for (int i = 0; i < mFrame.size(); i++) {
-		if (mFrame[i]->mMesh.mFaceNum > 0) {
-			mFrame[i]->mMesh.CreateVertexBuffer();
-		}
-	}
+//	for (int i = 0; i < mFrame.size(); i++) {
+//		if (mFrame[i]->mMesh.mFaceNum > 0) {
+//			mFrame[i]->mMesh.CreateVertexBuffer();
+//		}
+//	}
 	//スキンマトリックスのエリア作成
-	mpSkinningMatrix = new CMatrix[mFrame.size()];
+//	mpSkinningMatrix = new CMatrix[mFrame.size()];
 	//シェーダー読み込み
-	mShader.Load("skinmesh.vert", "skinmesh.flag");
+//	mShader.Load("skinmesh.vert", "skinmesh.flag");
 
 }
+
 /*
 GetToken
 文字列データから、単語を1つ取得する
@@ -747,30 +748,30 @@ CMaterial* CModelX::FindMaterial(char* name) {
 	//無い時はNULLを返却
 	return NULL;
 }
-void CModelX::SeparateAnimationSet(int idx, int start, int end, char* name)
-{
-	CAnimationSet* anim = mAnimationSet[idx];//分割するアニメーションセットを確定
-	CAnimationSet* as = new CAnimationSet();//アニメーションセットの生成
-	as->mpName = new char[strlen(name) + 1];
-	strcpy(as->mpName, name);
-	as->mMaxTime = end - start;
-	for (int i = 0; i < anim->mAnimation.size(); i++) {//既存のアニメーション分繰り返し
-		CAnimation* animation = new CAnimation();//アニメーションの生成
-		animation->mpFrameName = new char[strlen(anim->mAnimation[i]->mpFrameName) + 1];
-		strcpy(animation->mpFrameName, anim->mAnimation[i]->mpFrameName);
-		animation->mFrameIndex = anim->mAnimation[i]->mFrameIndex;
-		animation->mKeyNum = end - start + 1;
-		animation->mpKey = new CAnimationKey[animation->mKeyNum];//アニメーションキーの生成
-		animation->mKeyNum = 0;
-		for (int j = start; j <= end && j < anim->mAnimation[i]->mKeyNum; j++) {
-			animation->mpKey[animation->mKeyNum] = anim->mAnimation[i]->mpKey[j];
-			animation->mpKey[animation->mKeyNum].mTime = animation->mKeyNum++;
-		}//アニメーションキーのコピー
-		as->mAnimation.push_back(animation);//アニメーションの追加
-	}
-	mAnimationSet.push_back(as);//アニメーションセットの追加
+//void CModelX::SeparateAnimationSet(int idx, int start, int end, char* name)
+//{
+//	CAnimationSet* anim = mAnimationSet[idx];//分割するアニメーションセットを確定
+//	CAnimationSet* as = new CAnimationSet();//アニメーションセットの生成
+//	as->mpName = new char[strlen(name) + 1];
+//	strcpy(as->mpName, name);
+//	as->mMaxTime = end - start;
+//	for (int i = 0; i < anim->mAnimation.size(); i++) {//既存のアニメーション分繰り返し
+//		CAnimation* animation = new CAnimation();//アニメーションの生成
+//		animation->mpFrameName = new char[strlen(anim->mAnimation[i]->mpFrameName) + 1];
+//		strcpy(animation->mpFrameName, anim->mAnimation[i]->mpFrameName);
+//		animation->mFrameIndex = anim->mAnimation[i]->mFrameIndex;
+//		animation->mKeyNum = end - start + 1;
+//		animation->mpKey = new CAnimationKey[animation->mKeyNum];//アニメーションキーの生成
+//		animation->mKeyNum = 0;
+//		for (int j = start; j <= end && j < anim->mAnimation[i]->mKeyNum; j++) {
+//			animation->mpKey[animation->mKeyNum] = anim->mAnimation[i]->mpKey[j];
+//			animation->mpKey[animation->mKeyNum].mTime = animation->mKeyNum++;
+//		}//アニメーションキーのコピー
+//		as->mAnimation.push_back(animation);//アニメーションの追加
+//	}
+//	mAnimationSet.push_back(as);//アニメーションセットの追加
 
-}
+//}
 void CModelX::AnimateVertex(CMatrix* mat) {
 	//フレーム数分繰り返し
 	for (int i = 0; i < mFrame.size(); i++) {
@@ -809,11 +810,11 @@ void CMesh::AnimateVertex(CMatrix* mat) {
 	}
 }
 
-void CModelX::RenderShader(
-	CMatrix* pCombinedMatrix) {
-	mShader.Render(this, pCombinedMatrix);
-}
-
+//void CModelX::RenderShader(
+//	CMatrix* pCombinedMatrix) {
+//	mShader.Render(this, pCombinedMatrix);
+//}
+/*
 void CMesh::CreateVertexBuffer() {
 	//メッシュ毎に一回作成すればよい
 	if (mMyVertexBufferId > 0)
@@ -886,3 +887,4 @@ void CMesh::CreateVertexBuffer() {
 		pmyVertex = NULL;
 	}
 }
+*/
